@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: micro-system-provider
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 121.43.37.234:8848 # 服务的注册中心地址
+#      config:
+#        server-addr: 127.0.0.1:8848 # 服务的配置中心地址
+#        namespace: 9f44100a-83e1-4fe3-8a83-447ba39b7343
+#        group: dev  # 指定application对应的分组，不指定即DEFAULT_GROUP
+        #prefix: febs-server-system 指定application对应的名称，不指定默认application.name
+#        file-extension: properties
