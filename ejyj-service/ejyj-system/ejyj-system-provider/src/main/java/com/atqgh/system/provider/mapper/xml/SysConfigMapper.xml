@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.atqgh.system.provider.mapper.SysConfigMapper">
+
+	<!-- 结果集映射 -->
+    <resultMap id="sysConfigMap" type="com.atqgh.system.provider.dto.SysConfigDto" >
+        <result property="id" column="id"/>
+        <result property="configName" column="config_name"/>
+        <result property="configKey" column="config_key"/>
+        <result property="configValue" column="config_value"/>
+        <result property="configType" column="config_type"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="remark" column="remark"/>
+    </resultMap>
+
+    <!-- 结果集映射 -->
+    <resultMap id="sysConfigDetailMap" type="com.atqgh.system.provider.dto.SysConfigDto" >
+        <result property="id" column="id"/>
+        <result property="configName" column="config_name"/>
+        <result property="configKey" column="config_key"/>
+        <result property="configValue" column="config_value"/>
+        <result property="configType" column="config_type"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="remark" column="remark"/>
+    </resultMap>
+
+    <!-- 字段分片 -->
+    <sql id="Base_Column_List">
+        id,
+        config_name,
+        config_key,
+        config_value,
+        config_type,
+        create_by,
+        create_time,
+        update_by,
+        update_time,
+        remark
+    </sql>
+
+    <!-- 字段分片 -->
+    <sql id="Base_Column_Detail">
+        id,
+        config_name,
+        config_key,
+        config_value,
+        config_type,
+        create_by,
+        create_time,
+        update_by,
+        update_time,
+        remark
+    </sql>
+
+    <!-- 分页字段分片 -->
+    <sql id="Base_Column_Page">
+        id AS id,
+        config_name AS configName,
+        config_key AS configKey,
+        config_value AS configValue,
+        config_type AS configType,
+        create_by AS createBy,
+        create_time AS createTime,
+        update_by AS updateBy,
+        update_time AS updateTime,
+        remark AS remark
+    </sql>
+
+</mapper>

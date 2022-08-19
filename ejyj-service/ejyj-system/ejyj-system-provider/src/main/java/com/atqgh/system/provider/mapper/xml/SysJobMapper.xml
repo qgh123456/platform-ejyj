@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.atqgh.system.provider.mapper.SysJobMapper">
+
+	<!-- 结果集映射 -->
+    <resultMap id="sysJobMap" type="com.atqgh.system.provider.dto.SysJobDto" >
+        <result property="id" column="id"/>
+        <result property="jobName" column="job_name"/>
+        <result property="jobGroup" column="job_group"/>
+        <result property="invokeTarget" column="invoke_target"/>
+        <result property="cronExpression" column="cron_expression"/>
+        <result property="misfirePolicy" column="misfire_policy"/>
+        <result property="concurrent" column="concurrent"/>
+        <result property="status" column="status"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="remark" column="remark"/>
+    </resultMap>
+
+    <!-- 结果集映射 -->
+    <resultMap id="sysJobDetailMap" type="com.atqgh.system.provider.dto.SysJobDto" >
+        <result property="id" column="id"/>
+        <result property="jobName" column="job_name"/>
+        <result property="jobGroup" column="job_group"/>
+        <result property="invokeTarget" column="invoke_target"/>
+        <result property="cronExpression" column="cron_expression"/>
+        <result property="misfirePolicy" column="misfire_policy"/>
+        <result property="concurrent" column="concurrent"/>
+        <result property="status" column="status"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="remark" column="remark"/>
+    </resultMap>
+
+    <!-- 字段分片 -->
+    <sql id="Base_Column_List">
+        id,
+        job_name,
+        job_group,
+        invoke_target,
+        cron_expression,
+        misfire_policy,
+        concurrent,
+        status,
+        create_by,
+        create_time,
+        update_by,
+        update_time,
+        remark
+    </sql>
+
+    <!-- 字段分片 -->
+    <sql id="Base_Column_Detail">
+        id,
+        job_name,
+        job_group,
+        invoke_target,
+        cron_expression,
+        misfire_policy,
+        concurrent,
+        status,
+        create_by,
+        create_time,
+        update_by,
+        update_time,
+        remark
+    </sql>
+
+    <!-- 分页字段分片 -->
+    <sql id="Base_Column_Page">
+        id AS id,
+        job_name AS jobName,
+        job_group AS jobGroup,
+        invoke_target AS invokeTarget,
+        cron_expression AS cronExpression,
+        misfire_policy AS misfirePolicy,
+        concurrent AS concurrent,
+        status AS status,
+        create_by AS createBy,
+        create_time AS createTime,
+        update_by AS updateBy,
+        update_time AS updateTime,
+        remark AS remark
+    </sql>
+
+</mapper>

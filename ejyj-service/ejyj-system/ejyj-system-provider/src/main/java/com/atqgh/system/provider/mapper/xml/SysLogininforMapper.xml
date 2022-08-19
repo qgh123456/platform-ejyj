@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.atqgh.system.provider.mapper.SysLogininforMapper">
+
+	<!-- 结果集映射 -->
+    <resultMap id="sysLogininforMap" type="com.atqgh.system.provider.dto.SysLogininforDto" >
+        <result property="id" column="id"/>
+        <result property="userName" column="user_name"/>
+        <result property="ipaddr" column="ipaddr"/>
+        <result property="status" column="status"/>
+        <result property="msg" column="msg"/>
+        <result property="accessTime" column="access_time"/>
+    </resultMap>
+
+    <!-- 结果集映射 -->
+    <resultMap id="sysLogininforDetailMap" type="com.atqgh.system.provider.dto.SysLogininforDto" >
+        <result property="id" column="id"/>
+        <result property="userName" column="user_name"/>
+        <result property="ipaddr" column="ipaddr"/>
+        <result property="status" column="status"/>
+        <result property="msg" column="msg"/>
+        <result property="accessTime" column="access_time"/>
+    </resultMap>
+
+    <!-- 字段分片 -->
+    <sql id="Base_Column_List">
+        id,
+        user_name,
+        ipaddr,
+        status,
+        msg,
+        access_time
+    </sql>
+
+    <!-- 字段分片 -->
+    <sql id="Base_Column_Detail">
+        id,
+        user_name,
+        ipaddr,
+        status,
+        msg,
+        access_time
+    </sql>
+
+    <!-- 分页字段分片 -->
+    <sql id="Base_Column_Page">
+        id AS id,
+        user_name AS userName,
+        ipaddr AS ipaddr,
+        status AS status,
+        msg AS msg,
+        access_time AS accessTime
+    </sql>
+
+</mapper>

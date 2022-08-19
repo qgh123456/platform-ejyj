@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.atqgh.system.provider.mapper.SysUserRoleMapper">
+
+	<!-- 结果集映射 -->
+    <resultMap id="sysUserRoleMap" type="com.atqgh.system.provider.dto.SysUserRoleDto" >
+        <result property="userCode" column="user_code"/>
+        <result property="roleCode" column="role_code"/>
+    </resultMap>
+
+    <!-- 结果集映射 -->
+    <resultMap id="sysUserRoleDetailMap" type="com.atqgh.system.provider.dto.SysUserRoleDto" >
+        <result property="userCode" column="user_code"/>
+        <result property="roleCode" column="role_code"/>
+    </resultMap>
+
+    <!-- 字段分片 -->
+    <sql id="Base_Column_List">
+        user_code,
+        role_code
+    </sql>
+
+    <!-- 字段分片 -->
+    <sql id="Base_Column_Detail">
+        user_code,
+        role_code
+    </sql>
+
+    <!-- 分页字段分片 -->
+    <sql id="Base_Column_Page">
+        user_code AS userCode,
+        role_code AS roleCode
+    </sql>
+
+</mapper>

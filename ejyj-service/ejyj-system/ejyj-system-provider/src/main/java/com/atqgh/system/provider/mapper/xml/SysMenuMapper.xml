@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.atqgh.system.provider.mapper.SysMenuMapper">
+
+	<!-- 结果集映射 -->
+    <resultMap id="sysMenuMap" type="com.atqgh.system.provider.dto.SysMenuDto" >
+        <result property="id" column="id"/>
+        <result property="code" column="code"/>
+        <result property="menuName" column="menu_name"/>
+        <result property="pcode" column="pcode"/>
+        <result property="orderNum" column="order_num"/>
+        <result property="path" column="path"/>
+        <result property="component" column="component"/>
+        <result property="query" column="query"/>
+        <result property="isFrame" column="is_frame"/>
+        <result property="isCache" column="is_cache"/>
+        <result property="menuType" column="menu_type"/>
+        <result property="visible" column="visible"/>
+        <result property="status" column="status"/>
+        <result property="perms" column="perms"/>
+        <result property="icon" column="icon"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="remark" column="remark"/>
+    </resultMap>
+
+    <!-- 结果集映射 -->
+    <resultMap id="sysMenuDetailMap" type="com.atqgh.system.provider.dto.SysMenuDto" >
+        <result property="id" column="id"/>
+        <result property="code" column="code"/>
+        <result property="menuName" column="menu_name"/>
+        <result property="pcode" column="pcode"/>
+        <result property="orderNum" column="order_num"/>
+        <result property="path" column="path"/>
+        <result property="component" column="component"/>
+        <result property="query" column="query"/>
+        <result property="isFrame" column="is_frame"/>
+        <result property="isCache" column="is_cache"/>
+        <result property="menuType" column="menu_type"/>
+        <result property="visible" column="visible"/>
+        <result property="status" column="status"/>
+        <result property="perms" column="perms"/>
+        <result property="icon" column="icon"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="remark" column="remark"/>
+    </resultMap>
+
+    <!-- 字段分片 -->
+    <sql id="Base_Column_List">
+        id,
+        code,
+        menu_name,
+        pcode,
+        order_num,
+        path,
+        component,
+        query,
+        is_frame,
+        is_cache,
+        menu_type,
+        visible,
+        status,
+        perms,
+        icon,
+        create_by,
+        create_time,
+        update_by,
+        update_time,
+        remark
+    </sql>
+
+    <!-- 字段分片 -->
+    <sql id="Base_Column_Detail">
+        id,
+        code,
+        menu_name,
+        pcode,
+        order_num,
+        path,
+        component,
+        query,
+        is_frame,
+        is_cache,
+        menu_type,
+        visible,
+        status,
+        perms,
+        icon,
+        create_by,
+        create_time,
+        update_by,
+        update_time,
+        remark
+    </sql>
+
+    <!-- 分页字段分片 -->
+    <sql id="Base_Column_Page">
+        id AS id,
+        code AS code,
+        menu_name AS menuName,
+        pcode AS pcode,
+        order_num AS orderNum,
+        path AS path,
+        component AS component,
+        query AS query,
+        is_frame AS isFrame,
+        is_cache AS isCache,
+        menu_type AS menuType,
+        visible AS visible,
+        status AS status,
+        perms AS perms,
+        icon AS icon,
+        create_by AS createBy,
+        create_time AS createTime,
+        update_by AS updateBy,
+        update_time AS updateTime,
+        remark AS remark
+    </sql>
+
+</mapper>

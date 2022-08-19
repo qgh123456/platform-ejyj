@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.atqgh</groupId>
+    <artifactId>ejyj-service</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>ejyj-common</module>
+        <module>ejyj-system</module>
+        <module>ejyj-system/ejyj-system-api</module>
+        <module>ejyj-system/ejyj-system-provider</module>
+    </modules>
+
+    <packaging>pom</packaging>
+
+    <description>e家宜业</description>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <java.version>1.8</java.version>
+        <java.version>1.8</java.version>
+        <nimbus-jose-jwt.version>9.1.1</nimbus-jose-jwt.version>
+        <fastjson.version>1.2.62</fastjson.version>
+        <httpcore.version>4.4.12</httpcore.version>
+        <current_project.version>1.0-SNAPSHOT</current_project.version>
+        <validation-api.version>2.0.1.Final</validation-api.version>
+        <mybatis-plus.version>3.5.0</mybatis-plus.version>
+        <mysql.version>8.0.17</mysql.version>
+        <swagger.version>2.9.2</swagger.version>
+        <springboot.version>2.6.3</springboot.version>
+        <commons-lang3.version>3.11</commons-lang3.version>
+        <easy-captcha.version>1.6.2</easy-captcha.version>
+
+        <hutool-all.version>3.1.1</hutool-all.version>
+        <hutool-poi.version>5.7.13</hutool-poi.version>
+        <poi-ooxml.version>4.1.2</poi-ooxml.version>
+        <pagehelper.version>5.1.10</pagehelper.version>
+        <current.project.version>1.0-SNAPSHOT</current.project.version>
+
+
+        <spring-cloud.version>Hoxton.SR9</spring-cloud.version>
+        <alibaba.version>2.2.6.RELEASE</alibaba.version>
+        <spring-boot.version>2.3.2.RELEASE</spring-boot.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+
+            <dependency>
+                <groupId>com.atqgh</groupId>
+                <artifactId>ejyj-system-api</artifactId>
+                <version>${current_project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.atqgh</groupId>
+                <artifactId>ejyj-common-core</artifactId>
+                <version>${current_project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.nimbusds</groupId>
+                <artifactId>nimbus-jose-jwt</artifactId>
+                <version>${nimbus-jose-jwt.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpcore</artifactId>
+                <version>${httpcore.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.validation</groupId>
+                <artifactId>validation-api</artifactId>
+                <version>${validation-api.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.whvcse</groupId>
+                <artifactId>easy-captcha</artifactId>
+                <version>${easy-captcha.version}</version>
+            </dependency>
+
+            <!--小雷工具类-->
+            <dependency>
+                <groupId>com.xiaoleilu</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool-all.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-poi</artifactId>
+                <version>${hutool-poi.version}</version>
+            </dependency>
+
+            <!-- POI -->
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>${poi-ooxml.version}</version>
+            </dependency>
+
+            <!-- swagger -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper</artifactId>
+                <version>${pagehelper.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-parent</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+        </dependencies>
+
+    </dependencyManagement>
+
+
+</project>

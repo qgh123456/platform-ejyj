@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.atqgh.system.provider.mapper.SysDictDataMapper">
+
+	<!-- 结果集映射 -->
+    <resultMap id="sysDictDataMap" type="com.atqgh.system.provider.dto.SysDictDataDto" >
+        <result property="id" column="id"/>
+        <result property="dictSort" column="dict_sort"/>
+        <result property="dictLabel" column="dict_label"/>
+        <result property="dictValue" column="dict_value"/>
+        <result property="dictType" column="dict_type"/>
+        <result property="cssClass" column="css_class"/>
+        <result property="listClass" column="list_class"/>
+        <result property="isDefault" column="is_default"/>
+        <result property="status" column="status"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="remark" column="remark"/>
+    </resultMap>
+
+    <!-- 结果集映射 -->
+    <resultMap id="sysDictDataDetailMap" type="com.atqgh.system.provider.dto.SysDictDataDto" >
+        <result property="id" column="id"/>
+        <result property="dictSort" column="dict_sort"/>
+        <result property="dictLabel" column="dict_label"/>
+        <result property="dictValue" column="dict_value"/>
+        <result property="dictType" column="dict_type"/>
+        <result property="cssClass" column="css_class"/>
+        <result property="listClass" column="list_class"/>
+        <result property="isDefault" column="is_default"/>
+        <result property="status" column="status"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="remark" column="remark"/>
+    </resultMap>
+
+    <!-- 字段分片 -->
+    <sql id="Base_Column_List">
+        id,
+        dict_sort,
+        dict_label,
+        dict_value,
+        dict_type,
+        css_class,
+        list_class,
+        is_default,
+        status,
+        create_by,
+        create_time,
+        update_by,
+        update_time,
+        remark
+    </sql>
+
+    <!-- 字段分片 -->
+    <sql id="Base_Column_Detail">
+        id,
+        dict_sort,
+        dict_label,
+        dict_value,
+        dict_type,
+        css_class,
+        list_class,
+        is_default,
+        status,
+        create_by,
+        create_time,
+        update_by,
+        update_time,
+        remark
+    </sql>
+
+    <!-- 分页字段分片 -->
+    <sql id="Base_Column_Page">
+        id AS id,
+        dict_sort AS dictSort,
+        dict_label AS dictLabel,
+        dict_value AS dictValue,
+        dict_type AS dictType,
+        css_class AS cssClass,
+        list_class AS listClass,
+        is_default AS isDefault,
+        status AS status,
+        create_by AS createBy,
+        create_time AS createTime,
+        update_by AS updateBy,
+        update_time AS updateTime,
+        remark AS remark
+    </sql>
+
+</mapper>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.atqgh.system.provider.mapper.SysOperLogMapper">
+
+	<!-- 结果集映射 -->
+    <resultMap id="sysOperLogMap" type="com.atqgh.system.provider.dto.SysOperLogDto" >
+        <result property="operId" column="oper_id"/>
+        <result property="title" column="title"/>
+        <result property="businessType" column="business_type"/>
+        <result property="method" column="method"/>
+        <result property="requestMethod" column="request_method"/>
+        <result property="operatorType" column="operator_type"/>
+        <result property="operName" column="oper_name"/>
+        <result property="deptName" column="dept_name"/>
+        <result property="operUrl" column="oper_url"/>
+        <result property="operIp" column="oper_ip"/>
+        <result property="operLocation" column="oper_location"/>
+        <result property="operParam" column="oper_param"/>
+        <result property="jsonResult" column="json_result"/>
+        <result property="status" column="status"/>
+        <result property="errorMsg" column="error_msg"/>
+        <result property="operTime" column="oper_time"/>
+    </resultMap>
+
+    <!-- 结果集映射 -->
+    <resultMap id="sysOperLogDetailMap" type="com.atqgh.system.provider.dto.SysOperLogDto" >
+        <result property="operId" column="oper_id"/>
+        <result property="title" column="title"/>
+        <result property="businessType" column="business_type"/>
+        <result property="method" column="method"/>
+        <result property="requestMethod" column="request_method"/>
+        <result property="operatorType" column="operator_type"/>
+        <result property="operName" column="oper_name"/>
+        <result property="deptName" column="dept_name"/>
+        <result property="operUrl" column="oper_url"/>
+        <result property="operIp" column="oper_ip"/>
+        <result property="operLocation" column="oper_location"/>
+        <result property="operParam" column="oper_param"/>
+        <result property="jsonResult" column="json_result"/>
+        <result property="status" column="status"/>
+        <result property="errorMsg" column="error_msg"/>
+        <result property="operTime" column="oper_time"/>
+    </resultMap>
+
+    <!-- 字段分片 -->
+    <sql id="Base_Column_List">
+        oper_id,
+        title,
+        business_type,
+        method,
+        request_method,
+        operator_type,
+        oper_name,
+        dept_name,
+        oper_url,
+        oper_ip,
+        oper_location,
+        oper_param,
+        json_result,
+        status,
+        error_msg,
+        oper_time
+    </sql>
+
+    <!-- 字段分片 -->
+    <sql id="Base_Column_Detail">
+        oper_id,
+        title,
+        business_type,
+        method,
+        request_method,
+        operator_type,
+        oper_name,
+        dept_name,
+        oper_url,
+        oper_ip,
+        oper_location,
+        oper_param,
+        json_result,
+        status,
+        error_msg,
+        oper_time
+    </sql>
+
+    <!-- 分页字段分片 -->
+    <sql id="Base_Column_Page">
+        oper_id AS operId,
+        title AS title,
+        business_type AS businessType,
+        method AS method,
+        request_method AS requestMethod,
+        operator_type AS operatorType,
+        oper_name AS operName,
+        dept_name AS deptName,
+        oper_url AS operUrl,
+        oper_ip AS operIp,
+        oper_location AS operLocation,
+        oper_param AS operParam,
+        json_result AS jsonResult,
+        status AS status,
+        error_msg AS errorMsg,
+        oper_time AS operTime
+    </sql>
+
+</mapper>

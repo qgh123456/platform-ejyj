@@ -1,0 +1,8 @@
+target
+../logs
+### IntelliJ IDEA ###
+ejyj-service/.idea
+*.iws
+*.iml
+*.ipr
+.idea

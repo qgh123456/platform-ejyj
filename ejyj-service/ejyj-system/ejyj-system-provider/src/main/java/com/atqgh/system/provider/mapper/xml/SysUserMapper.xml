@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.atqgh.system.provider.mapper.SysUserMapper">
+
+	<!-- 结果集映射 -->
+    <resultMap id="sysUserMap" type="com.atqgh.system.provider.dto.SysUserDto" >
+        <result property="id" column="id"/>
+        <result property="code" column="code"/>
+        <result property="deptCode" column="dept_code"/>
+        <result property="userName" column="user_name"/>
+        <result property="nickName" column="nick_name"/>
+        <result property="userType" column="user_type"/>
+        <result property="email" column="email"/>
+        <result property="phonenumber" column="phonenumber"/>
+        <result property="sex" column="sex"/>
+        <result property="avatar" column="avatar"/>
+        <result property="password" column="password"/>
+        <result property="status" column="status"/>
+        <result property="delFlag" column="del_flag"/>
+        <result property="loginIp" column="login_ip"/>
+        <result property="loginDate" column="login_date"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="remark" column="remark"/>
+    </resultMap>
+
+    <!-- 结果集映射 -->
+    <resultMap id="sysUserDetailMap" type="com.atqgh.system.provider.dto.SysUserDto" >
+        <result property="id" column="id"/>
+        <result property="code" column="code"/>
+        <result property="deptCode" column="dept_code"/>
+        <result property="userName" column="user_name"/>
+        <result property="nickName" column="nick_name"/>
+        <result property="userType" column="user_type"/>
+        <result property="email" column="email"/>
+        <result property="phonenumber" column="phonenumber"/>
+        <result property="sex" column="sex"/>
+        <result property="avatar" column="avatar"/>
+        <result property="password" column="password"/>
+        <result property="status" column="status"/>
+        <result property="delFlag" column="del_flag"/>
+        <result property="loginIp" column="login_ip"/>
+        <result property="loginDate" column="login_date"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="remark" column="remark"/>
+    </resultMap>
+
+    <!-- 字段分片 -->
+    <sql id="Base_Column_List">
+        id,
+        code,
+        dept_code,
+        user_name,
+        nick_name,
+        user_type,
+        email,
+        phonenumber,
+        sex,
+        avatar,
+        password,
+        status,
+        del_flag,
+        login_ip,
+        login_date,
+        create_by,
+        create_time,
+        update_by,
+        update_time,
+        remark
+    </sql>
+
+    <!-- 字段分片 -->
+    <sql id="Base_Column_Detail">
+        id,
+        code,
+        dept_code,
+        user_name,
+        nick_name,
+        user_type,
+        email,
+        phonenumber,
+        sex,
+        avatar,
+        password,
+        status,
+        del_flag,
+        login_ip,
+        login_date,
+        create_by,
+        create_time,
+        update_by,
+        update_time,
+        remark
+    </sql>
+
+    <!-- 分页字段分片 -->
+    <sql id="Base_Column_Page">
+        id AS id,
+        code AS code,
+        dept_code AS deptCode,
+        user_name AS userName,
+        nick_name AS nickName,
+        user_type AS userType,
+        email AS email,
+        phonenumber AS phonenumber,
+        sex AS sex,
+        avatar AS avatar,
+        password AS password,
+        status AS status,
+        del_flag AS delFlag,
+        login_ip AS loginIp,
+        login_date AS loginDate,
+        create_by AS createBy,
+        create_time AS createTime,
+        update_by AS updateBy,
+        update_time AS updateTime,
+        remark AS remark
+    </sql>
+
+</mapper>

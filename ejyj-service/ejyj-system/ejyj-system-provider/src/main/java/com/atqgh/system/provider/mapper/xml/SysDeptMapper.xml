@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.atqgh.system.provider.mapper.SysDeptMapper">
+
+	<!-- 结果集映射 -->
+    <resultMap id="sysDeptMap" type="com.atqgh.system.provider.dto.SysDeptDto" >
+        <result property="id" column="id"/>
+        <result property="code" column="code"/>
+        <result property="pcode" column="pcode"/>
+        <result property="ancestors" column="ancestors"/>
+        <result property="deptName" column="dept_name"/>
+        <result property="orderNum" column="order_num"/>
+        <result property="leader" column="leader"/>
+        <result property="phone" column="phone"/>
+        <result property="email" column="email"/>
+        <result property="status" column="status"/>
+        <result property="delFlag" column="del_flag"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <!-- 结果集映射 -->
+    <resultMap id="sysDeptDetailMap" type="com.atqgh.system.provider.dto.SysDeptDto" >
+        <result property="id" column="id"/>
+        <result property="code" column="code"/>
+        <result property="pcode" column="pcode"/>
+        <result property="ancestors" column="ancestors"/>
+        <result property="deptName" column="dept_name"/>
+        <result property="orderNum" column="order_num"/>
+        <result property="leader" column="leader"/>
+        <result property="phone" column="phone"/>
+        <result property="email" column="email"/>
+        <result property="status" column="status"/>
+        <result property="delFlag" column="del_flag"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <!-- 字段分片 -->
+    <sql id="Base_Column_List">
+        id,
+        code,
+        pcode,
+        ancestors,
+        dept_name,
+        order_num,
+        leader,
+        phone,
+        email,
+        status,
+        del_flag,
+        create_by,
+        create_time,
+        update_by,
+        update_time
+    </sql>
+
+    <!-- 字段分片 -->
+    <sql id="Base_Column_Detail">
+        id,
+        code,
+        pcode,
+        ancestors,
+        dept_name,
+        order_num,
+        leader,
+        phone,
+        email,
+        status,
+        del_flag,
+        create_by,
+        create_time,
+        update_by,
+        update_time
+    </sql>
+
+    <!-- 分页字段分片 -->
+    <sql id="Base_Column_Page">
+        id AS id,
+        code AS code,
+        pcode AS pcode,
+        ancestors AS ancestors,
+        dept_name AS deptName,
+        order_num AS orderNum,
+        leader AS leader,
+        phone AS phone,
+        email AS email,
+        status AS status,
+        del_flag AS delFlag,
+        create_by AS createBy,
+        create_time AS createTime,
+        update_by AS updateBy,
+        update_time AS updateTime
+    </sql>
+
+</mapper>

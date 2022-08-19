@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.atqgh.system.provider.mapper.SysUserPostMapper">
+
+	<!-- 结果集映射 -->
+    <resultMap id="sysUserPostMap" type="com.atqgh.system.provider.dto.SysUserPostDto" >
+        <result property="userCode" column="user_code"/>
+        <result property="postCode" column="post_code"/>
+    </resultMap>
+
+    <!-- 结果集映射 -->
+    <resultMap id="sysUserPostDetailMap" type="com.atqgh.system.provider.dto.SysUserPostDto" >
+        <result property="userCode" column="user_code"/>
+        <result property="postCode" column="post_code"/>
+    </resultMap>
+
+    <!-- 字段分片 -->
+    <sql id="Base_Column_List">
+        user_code,
+        post_code
+    </sql>
+
+    <!-- 字段分片 -->
+    <sql id="Base_Column_Detail">
+        user_code,
+        post_code
+    </sql>
+
+    <!-- 分页字段分片 -->
+    <sql id="Base_Column_Page">
+        user_code AS userCode,
+        post_code AS postCode
+    </sql>
+
+</mapper>
