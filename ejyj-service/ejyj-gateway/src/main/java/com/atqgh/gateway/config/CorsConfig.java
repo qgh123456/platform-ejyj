@@ -21,6 +21,7 @@ public class CorsConfig {
      */
     @Bean
     public CorsWebFilter corsFilter() {
+
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         final CorsConfiguration config = new CorsConfiguration();
         // 允许cookies跨域

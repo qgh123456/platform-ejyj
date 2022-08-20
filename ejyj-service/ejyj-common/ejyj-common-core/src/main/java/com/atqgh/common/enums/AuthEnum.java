@@ -28,24 +28,18 @@ public enum AuthEnum {
      */
     AUTH_NONEXISTENT(404, "请求路径不存在");
 
-    /**
-     * key.
-     */
-    private Integer key;
+    private Integer code;
 
-    /**
-     * value.
-     */
     private String value;
 
     /**
      * 根据key获取value.
-     * @param key key
+     * @param code code
      * @return value
      */
-    public static String getValue(Integer key) {
+    public static String getValue(Integer code) {
         for (AuthEnum value : AuthEnum.values()) {
-            if (Objects.equals(key, value.getKey())) {
+            if (Objects.equals(code, value.getCode())) {
                 return value.getValue();
             }
         }

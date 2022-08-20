@@ -14,7 +14,7 @@ import reactor.core.publisher.Mono;
  * @since 2022/8/20 2:58 下午
  **/
 @Slf4j
-@Component
+//@Component
 public class LogFilter implements GlobalFilter {
 
     @Override

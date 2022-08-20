@@ -17,5 +17,8 @@ public class RedisConstants {
      */
     public static final String AUTH_KEY = ":Authorities";
 
+    public static final String TOKENHEADER = "Authorization";
+
+    public static final String LOGINKEY = "login:";
 
 }

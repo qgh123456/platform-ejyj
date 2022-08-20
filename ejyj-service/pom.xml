@@ -28,8 +28,8 @@
         <current_project.version>1.0-SNAPSHOT</current_project.version>
         <validation-api.version>2.0.1.Final</validation-api.version>
         <mybatis-plus.version>3.5.0</mybatis-plus.version>
-<!--        <mysql.version>8.0.17</mysql.version>-->
-        <mysql.version>5.1.47</mysql.version>
+        <mysql.version>8.0.17</mysql.version>
+<!--        <mysql.version>5.1.47</mysql.version>-->
         <swagger.version>2.9.2</swagger.version>
         <springboot.version>2.6.3</springboot.version>
         <commons-lang3.version>3.11</commons-lang3.version>
@@ -39,6 +39,8 @@
         <hutool-poi.version>5.7.13</hutool-poi.version>
         <poi-ooxml.version>4.1.2</poi-ooxml.version>
         <pagehelper.version>5.1.10</pagehelper.version>
+        <dynamic-datasource.version>2.5.4</dynamic-datasource.version>
+        <jjwt.version>0.9.0</jjwt.version>
         <current.project.version>1.0-SNAPSHOT</current.project.version>
 
 
@@ -51,6 +53,12 @@
         <dependencies>
 
             <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jjwt.version}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>com.atqgh</groupId>
                 <artifactId>ejyj-system-api</artifactId>
                 <version>${current_project.version}</version>
@@ -59,6 +67,12 @@
             <dependency>
                 <groupId>com.atqgh</groupId>
                 <artifactId>ejyj-common-core</artifactId>
+                <version>${current_project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.atqgh</groupId>
+                <artifactId>ejyj-common-security</artifactId>
                 <version>${current_project.version}</version>
             </dependency>
 
@@ -102,6 +116,12 @@
                 <groupId>javax.validation</groupId>
                 <artifactId>validation-api</artifactId>
                 <version>${validation-api.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+                <version>2.5.4</version>
             </dependency>
 
             <dependency>

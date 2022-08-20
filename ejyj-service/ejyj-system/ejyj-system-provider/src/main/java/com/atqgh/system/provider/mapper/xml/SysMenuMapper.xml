@@ -123,4 +123,15 @@
         remark AS remark
     </sql>
 
+    <select id="getPermsByUserId" resultType="com.atqgh.system.provider.dto.SysPermissDto">
+        select
+            sm.component,
+            sm.path,
+            sm.perms
+        from sys_user_role sur
+         inner join sys_role_menu srm on sur.role_code  = srm.role_code
+         inner join sys_menu sm on srm.menu_code  = sm.code
+        where sur.user_code = #{userCode}
+    </select>
+
 </mapper>

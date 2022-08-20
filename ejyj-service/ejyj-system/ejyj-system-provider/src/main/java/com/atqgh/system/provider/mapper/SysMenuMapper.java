@@ -1,11 +1,14 @@
 package com.atqgh.system.provider.mapper;
 
+import com.atqgh.system.provider.dto.SysPermissDto;
+import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.atqgh.system.provider.entity.SysMenu;
 import com.atqgh.system.provider.vo.SysMenuQueryVo;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.BeanUtils;
 
 /**
@@ -31,5 +34,13 @@ public interface SysMenuMapper extends BaseMapper<SysMenu> {
         // TODO 构建查询参数
         return wrapper;
     }
+
+    /**
+     * 根据用户id查询数据.
+     *
+     * @param userCode 用户编码
+     * @return 权限数据
+     */
+    List<SysPermissDto> getPermsByUserId(@Param("userCode") String userCode);
 
 }

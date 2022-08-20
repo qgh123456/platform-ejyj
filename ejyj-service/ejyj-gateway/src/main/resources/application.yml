@@ -24,7 +24,6 @@ spring:
           uri: lb://ejyj-system-provider
           predicates:
             - Path=/ejyj-system/**
-#            - CheckAuth=baixue
           filters:
             - StripPrefix=1
 #        - id: micro-system-provider-route
