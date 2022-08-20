@@ -10,8 +10,6 @@
     <modules>
         <module>ejyj-common</module>
         <module>ejyj-system</module>
-        <module>ejyj-system/ejyj-system-api</module>
-        <module>ejyj-system/ejyj-system-provider</module>
         <module>ejyj-gateway</module>
     </modules>
 
