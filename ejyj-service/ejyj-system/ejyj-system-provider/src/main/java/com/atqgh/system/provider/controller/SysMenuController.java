@@ -1,6 +1,6 @@
 package com.atqgh.system.provider.controller;
 
-import com.atqgh.common.utils.ResultObj;
+import com.atqgh.common.domain.ResultObj;
 import com.atqgh.system.provider.dto.SysMenuDto;
 import com.atqgh.system.provider.service.SysMenuService;
 import com.atqgh.system.provider.vo.SysMenuAddVo;
@@ -42,7 +42,7 @@ public class SysMenuController {
      */
     @ApiOperation(value = "新增菜单权限", notes = "新增菜单权限", produces = "application/json")
     @PostMapping("/add")
-    public ResultObj add(@ApiParam("新增参数") @Valid @RequestBody SysMenuAddVo addVo) {
+    public ResultObj<String> add(@ApiParam("新增参数") @Valid @RequestBody SysMenuAddVo addVo) {
 
         this.sysMenuService.insert(addVo);
         return ResultObj.success("新增菜单权限成功");
@@ -56,7 +56,7 @@ public class SysMenuController {
      */
     @PutMapping("/update")
     @ApiOperation(value = "修改菜单权限", notes = "修改菜单权限", produces = "application/json")
-    public ResultObj update(@ApiParam("修改参数") @Valid @RequestBody SysMenuUptVo updateVo) {
+    public ResultObj<String> update(@ApiParam("修改参数") @Valid @RequestBody SysMenuUptVo updateVo) {
 
         this.sysMenuService.update(updateVo);
         return ResultObj.success("修改菜单权限成功");
@@ -70,7 +70,7 @@ public class SysMenuController {
      */
     @DeleteMapping("/batchDel/{pks}")
     @ApiOperation(value = "根据菜单权限主键批量删除数据", notes = "根据菜单权限主键批量删除数据", produces = "application/json")
-    public ResultObj batchDel(@ApiParam("主键") @PathVariable(value = "pks") Set<Long> pks) {
+    public ResultObj<String> batchDel(@ApiParam("主键") @PathVariable(value = "pks") Set<Long> pks) {
 
         // 通过主键批量删除数据
         this.sysMenuService.batchDel(pks);
@@ -85,7 +85,7 @@ public class SysMenuController {
     */
     @GetMapping("/{menuId}")
     @ApiOperation(value = "根据menuId主键查看数据", notes = "根据menuId主键查看数据", produces = "application/json")
-    public ResultObj getDetail(@PathVariable(value = "menuId") Long menuId) {
+    public ResultObj<SysMenuDto> getDetail(@PathVariable(value = "menuId") Long menuId) {
 
         // 通过主键查看数据
         SysMenuDto dto = this.sysMenuService.getDetail(menuId);

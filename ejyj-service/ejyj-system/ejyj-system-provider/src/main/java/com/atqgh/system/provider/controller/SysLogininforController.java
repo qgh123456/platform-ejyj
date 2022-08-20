@@ -1,6 +1,6 @@
 package com.atqgh.system.provider.controller;
 
-import com.atqgh.common.utils.ResultObj;
+import com.atqgh.common.domain.ResultObj;
 import com.atqgh.system.provider.dto.SysLogininforDto;
 import com.atqgh.system.provider.service.SysLogininforService;
 import com.atqgh.system.provider.vo.SysLogininforAddVo;
@@ -42,7 +42,7 @@ public class SysLogininforController {
      */
     @ApiOperation(value = "新增系统访问记", notes = "新增系统访问记", produces = "application/json")
     @PostMapping("/add")
-    public ResultObj add(@ApiParam("新增参数") @Valid @RequestBody SysLogininforAddVo addVo) {
+    public ResultObj<String> add(@ApiParam("新增参数") @Valid @RequestBody SysLogininforAddVo addVo) {
 
         this.sysLogininforService.insert(addVo);
         return ResultObj.success("新增系统访问记成功");
@@ -56,7 +56,7 @@ public class SysLogininforController {
      */
     @PutMapping("/update")
     @ApiOperation(value = "修改系统访问记", notes = "修改系统访问记", produces = "application/json")
-    public ResultObj update(@ApiParam("修改参数") @Valid @RequestBody SysLogininforUptVo updateVo) {
+    public ResultObj<String> update(@ApiParam("修改参数") @Valid @RequestBody SysLogininforUptVo updateVo) {
 
         this.sysLogininforService.update(updateVo);
         return ResultObj.success("修改系统访问记成功");
@@ -70,7 +70,7 @@ public class SysLogininforController {
      */
     @DeleteMapping("/batchDel/{pks}")
     @ApiOperation(value = "根据系统访问记主键批量删除数据", notes = "根据系统访问记主键批量删除数据", produces = "application/json")
-    public ResultObj batchDel(@ApiParam("主键") @PathVariable(value = "pks") Set<Long> pks) {
+    public ResultObj<String> batchDel(@ApiParam("主键") @PathVariable(value = "pks") Set<Long> pks) {
 
         // 通过主键批量删除数据
         this.sysLogininforService.batchDel(pks);
@@ -85,7 +85,7 @@ public class SysLogininforController {
     */
     @GetMapping("/{infoId}")
     @ApiOperation(value = "根据infoId主键查看数据", notes = "根据infoId主键查看数据", produces = "application/json")
-    public ResultObj getDetail(@PathVariable(value = "infoId") Long infoId) {
+    public ResultObj<SysLogininforDto> getDetail(@PathVariable(value = "infoId") Long infoId) {
 
         // 通过主键查看数据
         SysLogininforDto dto = this.sysLogininforService.getDetail(infoId);

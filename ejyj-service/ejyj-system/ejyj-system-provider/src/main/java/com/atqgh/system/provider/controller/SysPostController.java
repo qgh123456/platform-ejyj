@@ -1,6 +1,6 @@
 package com.atqgh.system.provider.controller;
 
-import com.atqgh.common.utils.ResultObj;
+import com.atqgh.common.domain.ResultObj;
 import com.atqgh.system.provider.dto.SysPostDto;
 import com.atqgh.system.provider.service.SysPostService;
 import com.atqgh.system.provider.vo.SysPostAddVo;
@@ -42,7 +42,7 @@ public class SysPostController {
      */
     @ApiOperation(value = "新增岗位信息", notes = "新增岗位信息", produces = "application/json")
     @PostMapping("/add")
-    public ResultObj add(@ApiParam("新增参数") @Valid @RequestBody SysPostAddVo addVo) {
+    public ResultObj<String> add(@ApiParam("新增参数") @Valid @RequestBody SysPostAddVo addVo) {
 
         this.sysPostService.insert(addVo);
         return ResultObj.success("新增岗位信息成功");
@@ -56,7 +56,7 @@ public class SysPostController {
      */
     @PutMapping("/update")
     @ApiOperation(value = "修改岗位信息", notes = "修改岗位信息", produces = "application/json")
-    public ResultObj update(@ApiParam("修改参数") @Valid @RequestBody SysPostUptVo updateVo) {
+    public ResultObj<String> update(@ApiParam("修改参数") @Valid @RequestBody SysPostUptVo updateVo) {
 
         this.sysPostService.update(updateVo);
         return ResultObj.success("修改岗位信息成功");
@@ -70,7 +70,7 @@ public class SysPostController {
      */
     @DeleteMapping("/batchDel/{pks}")
     @ApiOperation(value = "根据岗位信息主键批量删除数据", notes = "根据岗位信息主键批量删除数据", produces = "application/json")
-    public ResultObj batchDel(@ApiParam("主键") @PathVariable(value = "pks") Set<Long> pks) {
+    public ResultObj<String> batchDel(@ApiParam("主键") @PathVariable(value = "pks") Set<Long> pks) {
 
         // 通过主键批量删除数据
         this.sysPostService.batchDel(pks);
@@ -85,7 +85,7 @@ public class SysPostController {
     */
     @GetMapping("/{postId}")
     @ApiOperation(value = "根据postId主键查看数据", notes = "根据postId主键查看数据", produces = "application/json")
-    public ResultObj getDetail(@PathVariable(value = "postId") Long postId) {
+    public ResultObj<SysPostDto> getDetail(@PathVariable(value = "postId") Long postId) {
 
         // 通过主键查看数据
         SysPostDto dto = this.sysPostService.getDetail(postId);

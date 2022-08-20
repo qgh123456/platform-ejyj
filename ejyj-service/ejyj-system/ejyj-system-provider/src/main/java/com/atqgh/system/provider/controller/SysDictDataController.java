@@ -1,6 +1,6 @@
 package com.atqgh.system.provider.controller;
 
-import com.atqgh.common.utils.ResultObj;
+import com.atqgh.common.domain.ResultObj;
 import com.atqgh.system.provider.dto.SysDictDataDto;
 import com.atqgh.system.provider.service.SysDictDataService;
 import com.atqgh.system.provider.vo.SysDictDataAddVo;
@@ -42,7 +42,7 @@ public class SysDictDataController {
      */
     @ApiOperation(value = "新增字典数据", notes = "新增字典数据", produces = "application/json")
     @PostMapping("/add")
-    public ResultObj add(@ApiParam("新增参数") @Valid @RequestBody SysDictDataAddVo addVo) {
+    public ResultObj<String> add(@ApiParam("新增参数") @Valid @RequestBody SysDictDataAddVo addVo) {
 
         this.sysDictDataService.insert(addVo);
         return ResultObj.success("新增字典数据成功");
@@ -56,7 +56,7 @@ public class SysDictDataController {
      */
     @PutMapping("/update")
     @ApiOperation(value = "修改字典数据", notes = "修改字典数据", produces = "application/json")
-    public ResultObj update(@ApiParam("修改参数") @Valid @RequestBody SysDictDataUptVo updateVo) {
+    public ResultObj<String> update(@ApiParam("修改参数") @Valid @RequestBody SysDictDataUptVo updateVo) {
 
         this.sysDictDataService.update(updateVo);
         return ResultObj.success("修改字典数据成功");
@@ -70,7 +70,7 @@ public class SysDictDataController {
      */
     @DeleteMapping("/batchDel/{pks}")
     @ApiOperation(value = "根据字典数据主键批量删除数据", notes = "根据字典数据主键批量删除数据", produces = "application/json")
-    public ResultObj batchDel(@ApiParam("主键") @PathVariable(value = "pks") Set<Long> pks) {
+    public ResultObj<String> batchDel(@ApiParam("主键") @PathVariable(value = "pks") Set<Long> pks) {
 
         // 通过主键批量删除数据
         this.sysDictDataService.batchDel(pks);
@@ -85,7 +85,7 @@ public class SysDictDataController {
     */
     @GetMapping("/{dictCode}")
     @ApiOperation(value = "根据dictCode主键查看数据", notes = "根据dictCode主键查看数据", produces = "application/json")
-    public ResultObj getDetail(@PathVariable(value = "dictCode") Long dictCode) {
+    public ResultObj<SysDictDataDto> getDetail(@PathVariable(value = "dictCode") Long dictCode) {
 
         // 通过主键查看数据
         SysDictDataDto dto = this.sysDictDataService.getDetail(dictCode);

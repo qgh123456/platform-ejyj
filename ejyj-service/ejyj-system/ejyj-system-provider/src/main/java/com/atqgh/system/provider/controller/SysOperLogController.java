@@ -1,6 +1,6 @@
 package com.atqgh.system.provider.controller;
 
-import com.atqgh.common.utils.ResultObj;
+import com.atqgh.common.domain.ResultObj;
 import com.atqgh.system.provider.dto.SysOperLogDto;
 import com.atqgh.system.provider.service.SysOperLogService;
 import com.atqgh.system.provider.vo.SysOperLogAddVo;
@@ -42,7 +42,7 @@ public class SysOperLogController {
      */
     @ApiOperation(value = "新增操作日志记", notes = "新增操作日志记", produces = "application/json")
     @PostMapping("/add")
-    public ResultObj add(@ApiParam("新增参数") @Valid @RequestBody SysOperLogAddVo addVo) {
+    public ResultObj<String> add(@ApiParam("新增参数") @Valid @RequestBody SysOperLogAddVo addVo) {
 
         this.sysOperLogService.insert(addVo);
         return ResultObj.success("新增操作日志记成功");
@@ -56,7 +56,7 @@ public class SysOperLogController {
      */
     @PutMapping("/update")
     @ApiOperation(value = "修改操作日志记", notes = "修改操作日志记", produces = "application/json")
-    public ResultObj update(@ApiParam("修改参数") @Valid @RequestBody SysOperLogUptVo updateVo) {
+    public ResultObj<String> update(@ApiParam("修改参数") @Valid @RequestBody SysOperLogUptVo updateVo) {
 
         this.sysOperLogService.update(updateVo);
         return ResultObj.success("修改操作日志记成功");
@@ -70,7 +70,7 @@ public class SysOperLogController {
      */
     @DeleteMapping("/batchDel/{pks}")
     @ApiOperation(value = "根据操作日志记主键批量删除数据", notes = "根据操作日志记主键批量删除数据", produces = "application/json")
-    public ResultObj batchDel(@ApiParam("主键") @PathVariable(value = "pks") Set<Long> pks) {
+    public ResultObj<String> batchDel(@ApiParam("主键") @PathVariable(value = "pks") Set<Long> pks) {
 
         // 通过主键批量删除数据
         this.sysOperLogService.batchDel(pks);
@@ -85,7 +85,7 @@ public class SysOperLogController {
     */
     @GetMapping("/{operId}")
     @ApiOperation(value = "根据operId主键查看数据", notes = "根据operId主键查看数据", produces = "application/json")
-    public ResultObj getDetail(@PathVariable(value = "operId") Long operId) {
+    public ResultObj<SysOperLogDto> getDetail(@PathVariable(value = "operId") Long operId) {
 
         // 通过主键查看数据
         SysOperLogDto dto = this.sysOperLogService.getDetail(operId);

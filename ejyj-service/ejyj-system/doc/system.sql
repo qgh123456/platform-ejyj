@@ -67,9 +67,8 @@ create table sys_user (
 -- ----------------------------
 -- 初始化-用户信息表数据
 -- ----------------------------
-insert into sys_user values(1,  3, 'admin', '若依', '00', 'ry@163.com', '15888888888', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', sysdate(), 'admin', sysdate(), '', null, '管理员');
-insert into sys_user values(2,  5, 'ry',    '若依', '00', 'ry@qq.com',  '15666666666', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', sysdate(), 'admin', sysdate(), '', null, '测试员');
-
+insert into sys_user values(1, '1',  3,  'admin', '若依', '00', 'ry@163.com', '15888888888', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', sysdate(), 'admin', sysdate(), '', null, '管理员');
+insert into sys_user values(2, '2',  5,  'ry',    '若依', '00', 'ry@qq.com',  '15666666666', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', sysdate(), 'admin', sysdate(), '', null, '测试员');
 
 -- ----------------------------
 -- 3、岗位信息表
@@ -402,7 +401,7 @@ create table sys_user_post
 (
   user_code   varchar(60) not null comment '用户ID',
   post_code   varchar(60) not null comment '岗位ID',
-  primary key (user_id, post_id)
+  primary key (user_code, post_code)
 ) engine=innodb comment = '用户与岗位关联表';
 
 -- ----------------------------

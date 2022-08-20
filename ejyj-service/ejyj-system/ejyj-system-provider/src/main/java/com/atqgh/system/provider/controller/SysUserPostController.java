@@ -1,6 +1,6 @@
 package com.atqgh.system.provider.controller;
 
-import com.atqgh.common.utils.ResultObj;
+import com.atqgh.common.domain.ResultObj;
 import com.atqgh.system.provider.dto.SysUserPostDto;
 import com.atqgh.system.provider.service.SysUserPostService;
 import com.atqgh.system.provider.vo.SysUserPostAddVo;
@@ -42,7 +42,7 @@ public class SysUserPostController {
      */
     @ApiOperation(value = "新增用户与岗位关联", notes = "新增用户与岗位关联", produces = "application/json")
     @PostMapping("/add")
-    public ResultObj add(@ApiParam("新增参数") @Valid @RequestBody SysUserPostAddVo addVo) {
+    public ResultObj<String> add(@ApiParam("新增参数") @Valid @RequestBody SysUserPostAddVo addVo) {
 
         this.sysUserPostService.insert(addVo);
         return ResultObj.success("新增用户与岗位关联成功");
@@ -56,7 +56,7 @@ public class SysUserPostController {
      */
     @PutMapping("/update")
     @ApiOperation(value = "修改用户与岗位关联", notes = "修改用户与岗位关联", produces = "application/json")
-    public ResultObj update(@ApiParam("修改参数") @Valid @RequestBody SysUserPostUptVo updateVo) {
+    public ResultObj<String> update(@ApiParam("修改参数") @Valid @RequestBody SysUserPostUptVo updateVo) {
 
         this.sysUserPostService.update(updateVo);
         return ResultObj.success("修改用户与岗位关联成功");
@@ -70,7 +70,7 @@ public class SysUserPostController {
      */
     @DeleteMapping("/batchDel/{pks}")
     @ApiOperation(value = "根据用户与岗位关联主键批量删除数据", notes = "根据用户与岗位关联主键批量删除数据", produces = "application/json")
-    public ResultObj batchDel(@ApiParam("主键") @PathVariable(value = "pks") Set<String> pks) {
+    public ResultObj<String> batchDel(@ApiParam("主键") @PathVariable(value = "pks") Set<String> pks) {
 
         // 通过主键批量删除数据
         this.sysUserPostService.batchDel(pks);
@@ -85,7 +85,7 @@ public class SysUserPostController {
     */
     @GetMapping("/{userCode}")
     @ApiOperation(value = "根据userId主键查看数据", notes = "根据userId主键查看数据", produces = "application/json")
-    public ResultObj getDetail(@PathVariable(value = "userCode") String userCode) {
+    public ResultObj<SysUserPostDto> getDetail(@PathVariable(value = "userCode") String userCode) {
 
         // 通过主键查看数据
         SysUserPostDto dto = this.sysUserPostService.getDetail(userCode);

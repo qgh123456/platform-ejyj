@@ -1,6 +1,6 @@
 package com.atqgh.system.provider.controller;
 
-import com.atqgh.common.utils.ResultObj;
+import com.atqgh.common.domain.ResultObj;
 import com.atqgh.system.provider.dto.SysJobLogDto;
 import com.atqgh.system.provider.service.SysJobLogService;
 import com.atqgh.system.provider.vo.SysJobLogAddVo;
@@ -42,7 +42,7 @@ public class SysJobLogController {
      */
     @ApiOperation(value = "新增定时任务调度日志", notes = "新增定时任务调度日志", produces = "application/json")
     @PostMapping("/add")
-    public ResultObj add(@ApiParam("新增参数") @Valid @RequestBody SysJobLogAddVo addVo) {
+    public ResultObj<String> add(@ApiParam("新增参数") @Valid @RequestBody SysJobLogAddVo addVo) {
 
         this.sysJobLogService.insert(addVo);
         return ResultObj.success("新增定时任务调度日志成功");
@@ -56,7 +56,7 @@ public class SysJobLogController {
      */
     @PutMapping("/update")
     @ApiOperation(value = "修改定时任务调度日志", notes = "修改定时任务调度日志", produces = "application/json")
-    public ResultObj update(@ApiParam("修改参数") @Valid @RequestBody SysJobLogUptVo updateVo) {
+    public ResultObj<String> update(@ApiParam("修改参数") @Valid @RequestBody SysJobLogUptVo updateVo) {
 
         this.sysJobLogService.update(updateVo);
         return ResultObj.success("修改定时任务调度日志成功");
@@ -70,7 +70,7 @@ public class SysJobLogController {
      */
     @DeleteMapping("/batchDel/{pks}")
     @ApiOperation(value = "根据定时任务调度日志主键批量删除数据", notes = "根据定时任务调度日志主键批量删除数据", produces = "application/json")
-    public ResultObj batchDel(@ApiParam("主键") @PathVariable(value = "pks") Set<Long> pks) {
+    public ResultObj<String> batchDel(@ApiParam("主键") @PathVariable(value = "pks") Set<Long> pks) {
 
         // 通过主键批量删除数据
         this.sysJobLogService.batchDel(pks);
@@ -85,7 +85,7 @@ public class SysJobLogController {
     */
     @GetMapping("/{jobLogId}")
     @ApiOperation(value = "根据jobLogId主键查看数据", notes = "根据jobLogId主键查看数据", produces = "application/json")
-    public ResultObj getDetail(@PathVariable(value = "jobLogId") Long jobLogId) {
+    public ResultObj<SysJobLogDto> getDetail(@PathVariable(value = "jobLogId") Long jobLogId) {
 
         // 通过主键查看数据
         SysJobLogDto dto = this.sysJobLogService.getDetail(jobLogId);

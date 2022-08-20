@@ -1,8 +1,10 @@
-package com.atqgh.common.utils;
+package com.atqgh.common.domain;
 
 import com.atqgh.common.enums.ResultStatus;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import java.io.Serializable;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * 返回数据.
@@ -10,6 +12,8 @@ import java.io.Serializable;
  *
  * @author Mubai
  */
+@Getter
+@Setter
 public final class ResultObj<T> implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -33,9 +37,9 @@ public final class ResultObj<T> implements Serializable {
      * @param <T> 泛型
      * @return 结果
      */
-    public static <T> ResultObj success(T data) {
+    public static <T> ResultObj<T> success(T data) {
 
-        return new ResultObj(ResultStatus.SUCCESS.getCode(), ResultStatus.SUCCESS.getMessage(), data);
+        return new ResultObj<T>(ResultStatus.SUCCESS.getCode(), ResultStatus.SUCCESS.getMessage(), data);
     }
 
     /**
@@ -45,8 +49,8 @@ public final class ResultObj<T> implements Serializable {
      * @param <T> 泛型
      * @return 结果
      */
-    public static <T> ResultObj success(String msg, T data) {
-        return new ResultObj(ResultStatus.SUCCESS.getCode(), msg, data);
+    public static <T> ResultObj<T> success(String msg, T data) {
+        return new ResultObj<T>(ResultStatus.SUCCESS.getCode(), msg, data);
     }
 
 
@@ -54,8 +58,8 @@ public final class ResultObj<T> implements Serializable {
      * 错误参数.
      * @return 结果
      */
-    public static ResultObj error() {
-        return new ResultObj(ResultStatus.BUSINESS_REQUEST_FAILED.getCode(), ResultStatus.BUSINESS_REQUEST_FAILED.getMessage(), null);
+    public static ResultObj<Object> error() {
+        return new ResultObj<Object>(ResultStatus.BUSINESS_REQUEST_FAILED.getCode(), ResultStatus.BUSINESS_REQUEST_FAILED.getMessage(), null);
     }
 
     /**
@@ -63,7 +67,7 @@ public final class ResultObj<T> implements Serializable {
      * @param msg 消息
      * @return 结果
      */
-    public static ResultObj error(String msg) {
+    public static ResultObj<Object> error(String msg) {
         return error(ResultStatus.BUSINESS_REQUEST_FAILED.getCode(), msg, null);
     }
 
@@ -73,7 +77,7 @@ public final class ResultObj<T> implements Serializable {
      * @param msg 消息
      * @return 结果
      */
-    public static ResultObj error(int code, String msg) {
+    public static ResultObj<Object> error(int code, String msg) {
 
         return error(ResultStatus.BUSINESS_REQUEST_FAILED.getCode(), msg, null);
     }
@@ -86,9 +90,9 @@ public final class ResultObj<T> implements Serializable {
      * @param <T> 泛型
      * @return 结果
      */
-    public static <T> ResultObj error(int code, String msg, T data) {
+    public static <T> ResultObj<T> error(int code, String msg, T data) {
 
-        return new ResultObj(code, msg, data);
+        return new ResultObj<T>(code, msg, data);
     }
 
 //    /**

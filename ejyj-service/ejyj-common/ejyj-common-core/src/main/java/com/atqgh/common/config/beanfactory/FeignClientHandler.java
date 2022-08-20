@@ -4,7 +4,7 @@ package com.atqgh.common.config.beanfactory;//package com.atqgh.common.config.be
 //import com.atqgh.common.enums.ResultStatus;
 //import com.atqgh.common.exception.MicroException;
 //import com.atqgh.common.utils.JsonUtils;
-//import com.atqgh.common.utils.ResultObj;
+//import com.atqgh.common.domain.ResultObj;
 //import java.lang.reflect.InvocationHandler;
 //import java.lang.reflect.InvocationTargetException;
 //import java.lang.reflect.Method;

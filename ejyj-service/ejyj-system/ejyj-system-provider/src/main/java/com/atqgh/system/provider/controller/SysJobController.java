@@ -1,6 +1,6 @@
 package com.atqgh.system.provider.controller;
 
-import com.atqgh.common.utils.ResultObj;
+import com.atqgh.common.domain.ResultObj;
 import com.atqgh.system.provider.dto.SysJobDto;
 import com.atqgh.system.provider.service.SysJobService;
 import com.atqgh.system.provider.vo.SysJobAddVo;
@@ -42,7 +42,7 @@ public class SysJobController {
      */
     @ApiOperation(value = "新增定时任务调度", notes = "新增定时任务调度", produces = "application/json")
     @PostMapping("/add")
-    public ResultObj add(@ApiParam("新增参数") @Valid @RequestBody SysJobAddVo addVo) {
+    public ResultObj<String> add(@ApiParam("新增参数") @Valid @RequestBody SysJobAddVo addVo) {
 
         this.sysJobService.insert(addVo);
         return ResultObj.success("新增定时任务调度成功");
@@ -56,7 +56,7 @@ public class SysJobController {
      */
     @PutMapping("/update")
     @ApiOperation(value = "修改定时任务调度", notes = "修改定时任务调度", produces = "application/json")
-    public ResultObj update(@ApiParam("修改参数") @Valid @RequestBody SysJobUptVo updateVo) {
+    public ResultObj<String> update(@ApiParam("修改参数") @Valid @RequestBody SysJobUptVo updateVo) {
 
         this.sysJobService.update(updateVo);
         return ResultObj.success("修改定时任务调度成功");
@@ -70,7 +70,7 @@ public class SysJobController {
      */
     @DeleteMapping("/batchDel/{pks}")
     @ApiOperation(value = "根据定时任务调度主键批量删除数据", notes = "根据定时任务调度主键批量删除数据", produces = "application/json")
-    public ResultObj batchDel(@ApiParam("主键") @PathVariable(value = "pks") Set<Long> pks) {
+    public ResultObj<String> batchDel(@ApiParam("主键") @PathVariable(value = "pks") Set<Long> pks) {
 
         // 通过主键批量删除数据
         this.sysJobService.batchDel(pks);
@@ -85,7 +85,7 @@ public class SysJobController {
     */
     @GetMapping("/{jobId}")
     @ApiOperation(value = "根据jobId主键查看数据", notes = "根据jobId主键查看数据", produces = "application/json")
-    public ResultObj getDetail(@PathVariable(value = "jobId") Long jobId) {
+    public ResultObj<SysJobDto> getDetail(@PathVariable(value = "jobId") Long jobId) {
 
         // 通过主键查看数据
         SysJobDto dto = this.sysJobService.getDetail(jobId);

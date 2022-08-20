@@ -1,6 +1,6 @@
 package com.atqgh.system.provider.controller;
 
-import com.atqgh.common.utils.ResultObj;
+import com.atqgh.common.domain.ResultObj;
 import com.atqgh.system.provider.dto.SysNoticeDto;
 import com.atqgh.system.provider.service.SysNoticeService;
 import com.atqgh.system.provider.vo.SysNoticeAddVo;
@@ -42,7 +42,7 @@ public class SysNoticeController {
      */
     @ApiOperation(value = "新增通知公告", notes = "新增通知公告", produces = "application/json")
     @PostMapping("/add")
-    public ResultObj add(@ApiParam("新增参数") @Valid @RequestBody SysNoticeAddVo addVo) {
+    public ResultObj<String> add(@ApiParam("新增参数") @Valid @RequestBody SysNoticeAddVo addVo) {
 
         this.sysNoticeService.insert(addVo);
         return ResultObj.success("新增通知公告成功");
@@ -56,7 +56,7 @@ public class SysNoticeController {
      */
     @PutMapping("/update")
     @ApiOperation(value = "修改通知公告", notes = "修改通知公告", produces = "application/json")
-    public ResultObj update(@ApiParam("修改参数") @Valid @RequestBody SysNoticeUptVo updateVo) {
+    public ResultObj<String> update(@ApiParam("修改参数") @Valid @RequestBody SysNoticeUptVo updateVo) {
 
         this.sysNoticeService.update(updateVo);
         return ResultObj.success("修改通知公告成功");
@@ -70,7 +70,7 @@ public class SysNoticeController {
      */
     @DeleteMapping("/batchDel/{pks}")
     @ApiOperation(value = "根据通知公告主键批量删除数据", notes = "根据通知公告主键批量删除数据", produces = "application/json")
-    public ResultObj batchDel(@ApiParam("主键") @PathVariable(value = "pks") Set<Integer> pks) {
+    public ResultObj<String> batchDel(@ApiParam("主键") @PathVariable(value = "pks") Set<Integer> pks) {
 
         // 通过主键批量删除数据
         this.sysNoticeService.batchDel(pks);
@@ -85,7 +85,7 @@ public class SysNoticeController {
     */
     @GetMapping("/{noticeId}")
     @ApiOperation(value = "根据noticeId主键查看数据", notes = "根据noticeId主键查看数据", produces = "application/json")
-    public ResultObj getDetail(@PathVariable(value = "noticeId") Integer noticeId) {
+    public ResultObj<SysNoticeDto> getDetail(@PathVariable(value = "noticeId") Integer noticeId) {
 
         // 通过主键查看数据
         SysNoticeDto dto = this.sysNoticeService.getDetail(noticeId);

@@ -1,6 +1,6 @@
 package com.atqgh.system.provider.controller;
 
-import com.atqgh.common.utils.ResultObj;
+import com.atqgh.common.domain.ResultObj;
 import com.atqgh.system.provider.dto.SysDeptDto;
 import com.atqgh.system.provider.service.SysDeptService;
 import com.atqgh.system.provider.vo.SysDeptAddVo;
@@ -42,7 +42,7 @@ public class SysDeptController {
      */
     @ApiOperation(value = "新增部门", notes = "新增部门", produces = "application/json")
     @PostMapping("/add")
-    public ResultObj add(@ApiParam("新增参数") @Valid @RequestBody SysDeptAddVo addVo) {
+    public ResultObj<String> add(@ApiParam("新增参数") @Valid @RequestBody SysDeptAddVo addVo) {
 
         this.sysDeptService.insert(addVo);
         return ResultObj.success("新增部门成功");
@@ -56,7 +56,7 @@ public class SysDeptController {
      */
     @PutMapping("/update")
     @ApiOperation(value = "修改部门", notes = "修改部门", produces = "application/json")
-    public ResultObj update(@ApiParam("修改参数") @Valid @RequestBody SysDeptUptVo updateVo) {
+    public ResultObj<String> update(@ApiParam("修改参数") @Valid @RequestBody SysDeptUptVo updateVo) {
 
         this.sysDeptService.update(updateVo);
         return ResultObj.success("修改部门成功");
@@ -70,7 +70,7 @@ public class SysDeptController {
      */
     @DeleteMapping("/batchDel/{pks}")
     @ApiOperation(value = "根据部门主键批量删除数据", notes = "根据部门主键批量删除数据", produces = "application/json")
-    public ResultObj batchDel(@ApiParam("主键") @PathVariable(value = "pks") Set<Long> pks) {
+    public ResultObj<String> batchDel(@ApiParam("主键") @PathVariable(value = "pks") Set<Long> pks) {
 
         // 通过主键批量删除数据
         this.sysDeptService.batchDel(pks);
@@ -85,7 +85,7 @@ public class SysDeptController {
     */
     @GetMapping("/{deptId}")
     @ApiOperation(value = "根据deptId主键查看数据", notes = "根据deptId主键查看数据", produces = "application/json")
-    public ResultObj getDetail(@PathVariable(value = "deptId") Long deptId) {
+    public ResultObj<SysDeptDto> getDetail(@PathVariable(value = "deptId") Long deptId) {
 
         // 通过主键查看数据
         SysDeptDto dto = this.sysDeptService.getDetail(deptId);

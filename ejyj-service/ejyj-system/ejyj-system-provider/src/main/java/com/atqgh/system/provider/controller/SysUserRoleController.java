@@ -1,6 +1,6 @@
 package com.atqgh.system.provider.controller;
 
-import com.atqgh.common.utils.ResultObj;
+import com.atqgh.common.domain.ResultObj;
 import com.atqgh.system.provider.dto.SysUserRoleDto;
 import com.atqgh.system.provider.service.SysUserRoleService;
 import com.atqgh.system.provider.vo.SysUserRoleAddVo;
@@ -42,7 +42,7 @@ public class SysUserRoleController {
      */
     @ApiOperation(value = "新增用户和角色关联", notes = "新增用户和角色关联", produces = "application/json")
     @PostMapping("/add")
-    public ResultObj add(@ApiParam("新增参数") @Valid @RequestBody SysUserRoleAddVo addVo) {
+    public ResultObj<String> add(@ApiParam("新增参数") @Valid @RequestBody SysUserRoleAddVo addVo) {
 
         this.sysUserRoleService.insert(addVo);
         return ResultObj.success("新增用户和角色关联成功");
@@ -56,7 +56,7 @@ public class SysUserRoleController {
      */
     @PutMapping("/update")
     @ApiOperation(value = "修改用户和角色关联", notes = "修改用户和角色关联", produces = "application/json")
-    public ResultObj update(@ApiParam("修改参数") @Valid @RequestBody SysUserRoleUptVo updateVo) {
+    public ResultObj<String> update(@ApiParam("修改参数") @Valid @RequestBody SysUserRoleUptVo updateVo) {
 
         this.sysUserRoleService.update(updateVo);
         return ResultObj.success("修改用户和角色关联成功");
@@ -70,7 +70,7 @@ public class SysUserRoleController {
      */
     @DeleteMapping("/batchDel/{pks}")
     @ApiOperation(value = "根据用户和角色关联主键批量删除数据", notes = "根据用户和角色关联主键批量删除数据", produces = "application/json")
-    public ResultObj batchDel(@ApiParam("主键") @PathVariable(value = "pks") Set<String> pks) {
+    public ResultObj<String> batchDel(@ApiParam("主键") @PathVariable(value = "pks") Set<String> pks) {
 
         // 通过主键批量删除数据
         this.sysUserRoleService.batchDel(pks);
@@ -85,7 +85,7 @@ public class SysUserRoleController {
     */
     @GetMapping("/{userCode}")
     @ApiOperation(value = "根据userId主键查看数据", notes = "根据userId主键查看数据", produces = "application/json")
-    public ResultObj getDetail(@PathVariable(value = "userCode") String userCode) {
+    public ResultObj<SysUserRoleDto> getDetail(@PathVariable(value = "userCode") String userCode) {
 
         // 通过主键查看数据
         SysUserRoleDto dto = this.sysUserRoleService.getDetail(userCode);

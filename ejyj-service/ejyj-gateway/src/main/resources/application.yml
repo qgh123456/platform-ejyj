@@ -1,0 +1,41 @@
+server:
+  port: 4444
+spring:
+  application:
+    name: ejyj-gateway
+#  redis:
+#    database: 0
+#    host: 121.43.37.234
+#    port: 6379
+
+  cloud:
+    # Sentinel熔断器
+    # 网关路由配置
+    gateway:
+      # 设置与服务注册发现组件结合，这样可以采用服务名的路由策略
+#      discovery:
+#        locator:
+#          enabled: true
+      # 配置路由规则
+      routes:
+        # 采用自定义路由ID
+        - id: ejyj-system-provider_route
+          # 采用 LoadBalanceClient 方式请求，以 lb:// 开头，后面的是注册在 Nacos 上的服务名
+          uri: lb://ejyj-system-provider
+          predicates:
+            - Path=/ejyj-system-provider_route/**
+          filters:
+            - StripPrefix=1
+#        - id: micro-system-provider
+#          # 采用 LoadBalanceClient 方式请求，以 lb:// 开头，后面的是注册在 Nacos 上的服务名
+#          uri: lb://micro-system-provider
+#          predicates:
+#            - Path=/system/**
+
+
+# 配置白名单路径
+#exclusion:
+#  url:
+#    - /auth/checkUser
+#    - /auth/login
+#    - /auth/logout

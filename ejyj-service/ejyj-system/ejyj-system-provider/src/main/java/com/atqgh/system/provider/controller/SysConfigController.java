@@ -1,6 +1,6 @@
 package com.atqgh.system.provider.controller;
 
-import com.atqgh.common.utils.ResultObj;
+import com.atqgh.common.domain.ResultObj;
 import com.atqgh.system.provider.dto.SysConfigDto;
 import com.atqgh.system.provider.service.SysConfigService;
 import com.atqgh.system.provider.vo.SysConfigAddVo;
@@ -42,7 +42,7 @@ public class SysConfigController {
      */
     @ApiOperation(value = "新增参数配置", notes = "新增参数配置", produces = "application/json")
     @PostMapping("/add")
-    public ResultObj add(@ApiParam("新增参数") @Valid @RequestBody SysConfigAddVo addVo) {
+    public ResultObj<String> add(@ApiParam("新增参数") @Valid @RequestBody SysConfigAddVo addVo) {
 
         this.sysConfigService.insert(addVo);
         return ResultObj.success("新增参数配置成功");
@@ -56,7 +56,7 @@ public class SysConfigController {
      */
     @PutMapping("/update")
     @ApiOperation(value = "修改参数配置", notes = "修改参数配置", produces = "application/json")
-    public ResultObj update(@ApiParam("修改参数") @Valid @RequestBody SysConfigUptVo updateVo) {
+    public ResultObj<String> update(@ApiParam("修改参数") @Valid @RequestBody SysConfigUptVo updateVo) {
 
         this.sysConfigService.update(updateVo);
         return ResultObj.success("修改参数配置成功");
@@ -70,7 +70,7 @@ public class SysConfigController {
      */
     @DeleteMapping("/batchDel/{pks}")
     @ApiOperation(value = "根据参数配置主键批量删除数据", notes = "根据参数配置主键批量删除数据", produces = "application/json")
-    public ResultObj batchDel(@ApiParam("主键") @PathVariable(value = "pks") Set<Integer> pks) {
+    public ResultObj<String> batchDel(@ApiParam("主键") @PathVariable(value = "pks") Set<Integer> pks) {
 
         // 通过主键批量删除数据
         this.sysConfigService.batchDel(pks);
@@ -85,7 +85,7 @@ public class SysConfigController {
     */
     @GetMapping("/{configId}")
     @ApiOperation(value = "根据configId主键查看数据", notes = "根据configId主键查看数据", produces = "application/json")
-    public ResultObj getDetail(@PathVariable(value = "configId") Integer configId) {
+    public ResultObj<SysConfigDto> getDetail(@PathVariable(value = "configId") Integer configId) {
 
         // 通过主键查看数据
         SysConfigDto dto = this.sysConfigService.getDetail(configId);

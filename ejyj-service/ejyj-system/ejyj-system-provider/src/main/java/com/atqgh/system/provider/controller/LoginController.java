@@ -1,6 +1,6 @@
 package com.atqgh.system.provider.controller;//package com.atqgh.system.provider.controller;
 //
-//import com.atqgh.common.utils.ResultObj;
+//import com.atqgh.common.domain.ResultObj;
 //import javax.annotation.Resource;
 //import org.springframework.web.bind.annotation.GetMapping;
 //import org.springframework.web.bind.annotation.PostMapping;

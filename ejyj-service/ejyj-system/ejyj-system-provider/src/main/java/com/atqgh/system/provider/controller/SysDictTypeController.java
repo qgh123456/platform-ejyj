@@ -1,6 +1,6 @@
 package com.atqgh.system.provider.controller;
 
-import com.atqgh.common.utils.ResultObj;
+import com.atqgh.common.domain.ResultObj;
 import com.atqgh.system.provider.dto.SysDictTypeDto;
 import com.atqgh.system.provider.service.SysDictTypeService;
 import com.atqgh.system.provider.vo.SysDictTypeAddVo;
@@ -42,7 +42,7 @@ public class SysDictTypeController {
      */
     @ApiOperation(value = "新增字典类型", notes = "新增字典类型", produces = "application/json")
     @PostMapping("/add")
-    public ResultObj add(@ApiParam("新增参数") @Valid @RequestBody SysDictTypeAddVo addVo) {
+    public ResultObj<String> add(@ApiParam("新增参数") @Valid @RequestBody SysDictTypeAddVo addVo) {
 
         this.sysDictTypeService.insert(addVo);
         return ResultObj.success("新增字典类型成功");
@@ -56,7 +56,7 @@ public class SysDictTypeController {
      */
     @PutMapping("/update")
     @ApiOperation(value = "修改字典类型", notes = "修改字典类型", produces = "application/json")
-    public ResultObj update(@ApiParam("修改参数") @Valid @RequestBody SysDictTypeUptVo updateVo) {
+    public ResultObj<String> update(@ApiParam("修改参数") @Valid @RequestBody SysDictTypeUptVo updateVo) {
 
         this.sysDictTypeService.update(updateVo);
         return ResultObj.success("修改字典类型成功");
@@ -70,7 +70,7 @@ public class SysDictTypeController {
      */
     @DeleteMapping("/batchDel/{pks}")
     @ApiOperation(value = "根据字典类型主键批量删除数据", notes = "根据字典类型主键批量删除数据", produces = "application/json")
-    public ResultObj batchDel(@ApiParam("主键") @PathVariable(value = "pks") Set<String> pks) {
+    public ResultObj<String> batchDel(@ApiParam("主键") @PathVariable(value = "pks") Set<String> pks) {
 
         // 通过主键批量删除数据
         this.sysDictTypeService.batchDel(pks);
@@ -85,7 +85,7 @@ public class SysDictTypeController {
     */
     @GetMapping("/{dictType}")
     @ApiOperation(value = "根据dictType主键查看数据", notes = "根据dictType主键查看数据", produces = "application/json")
-    public ResultObj getDetail(@PathVariable(value = "dictType") String dictType) {
+    public ResultObj<SysDictTypeDto> getDetail(@PathVariable(value = "dictType") String dictType) {
 
         // 通过主键查看数据
         SysDictTypeDto dto = this.sysDictTypeService.getDetail(dictType);

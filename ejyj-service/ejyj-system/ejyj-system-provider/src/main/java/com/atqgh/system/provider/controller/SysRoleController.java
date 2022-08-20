@@ -1,6 +1,6 @@
 package com.atqgh.system.provider.controller;
 
-import com.atqgh.common.utils.ResultObj;
+import com.atqgh.common.domain.ResultObj;
 import com.atqgh.system.provider.dto.SysRoleDto;
 import com.atqgh.system.provider.service.SysRoleService;
 import com.atqgh.system.provider.vo.SysRoleAddVo;
@@ -42,7 +42,7 @@ public class SysRoleController {
      */
     @ApiOperation(value = "新增角色信息", notes = "新增角色信息", produces = "application/json")
     @PostMapping("/add")
-    public ResultObj add(@ApiParam("新增参数") @Valid @RequestBody SysRoleAddVo addVo) {
+    public ResultObj<String> add(@ApiParam("新增参数") @Valid @RequestBody SysRoleAddVo addVo) {
 
         this.sysRoleService.insert(addVo);
         return ResultObj.success("新增角色信息成功");
@@ -56,7 +56,7 @@ public class SysRoleController {
      */
     @PutMapping("/update")
     @ApiOperation(value = "修改角色信息", notes = "修改角色信息", produces = "application/json")
-    public ResultObj update(@ApiParam("修改参数") @Valid @RequestBody SysRoleUptVo updateVo) {
+    public ResultObj<String> update(@ApiParam("修改参数") @Valid @RequestBody SysRoleUptVo updateVo) {
 
         this.sysRoleService.update(updateVo);
         return ResultObj.success("修改角色信息成功");
@@ -70,7 +70,7 @@ public class SysRoleController {
      */
     @DeleteMapping("/batchDel/{pks}")
     @ApiOperation(value = "根据角色信息主键批量删除数据", notes = "根据角色信息主键批量删除数据", produces = "application/json")
-    public ResultObj batchDel(@ApiParam("主键") @PathVariable(value = "pks") Set<Long> pks) {
+    public ResultObj<String> batchDel(@ApiParam("主键") @PathVariable(value = "pks") Set<Long> pks) {
 
         // 通过主键批量删除数据
         this.sysRoleService.batchDel(pks);
@@ -85,7 +85,7 @@ public class SysRoleController {
     */
     @GetMapping("/{roleId}")
     @ApiOperation(value = "根据roleId主键查看数据", notes = "根据roleId主键查看数据", produces = "application/json")
-    public ResultObj getDetail(@PathVariable(value = "roleId") Long roleId) {
+    public ResultObj<SysRoleDto> getDetail(@PathVariable(value = "roleId") Long roleId) {
 
         // 通过主键查看数据
         SysRoleDto dto = this.sysRoleService.getDetail(roleId);

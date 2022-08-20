@@ -1,6 +1,6 @@
 package com.atqgh.system.provider.controller;
 
-import com.atqgh.common.utils.ResultObj;
+import com.atqgh.common.domain.ResultObj;
 import com.atqgh.system.provider.dto.SysRoleMenuDto;
 import com.atqgh.system.provider.service.SysRoleMenuService;
 import com.atqgh.system.provider.vo.SysRoleMenuAddVo;
@@ -42,7 +42,7 @@ public class SysRoleMenuController {
      */
     @ApiOperation(value = "新增角色和菜单关联", notes = "新增角色和菜单关联", produces = "application/json")
     @PostMapping("/add")
-    public ResultObj add(@ApiParam("新增参数") @Valid @RequestBody SysRoleMenuAddVo addVo) {
+    public ResultObj<String> add(@ApiParam("新增参数") @Valid @RequestBody SysRoleMenuAddVo addVo) {
 
         this.sysRoleMenuService.insert(addVo);
         return ResultObj.success("新增角色和菜单关联成功");
@@ -56,7 +56,7 @@ public class SysRoleMenuController {
      */
     @PutMapping("/update")
     @ApiOperation(value = "修改角色和菜单关联", notes = "修改角色和菜单关联", produces = "application/json")
-    public ResultObj update(@ApiParam("修改参数") @Valid @RequestBody SysRoleMenuUptVo updateVo) {
+    public ResultObj<String> update(@ApiParam("修改参数") @Valid @RequestBody SysRoleMenuUptVo updateVo) {
 
         this.sysRoleMenuService.update(updateVo);
         return ResultObj.success("修改角色和菜单关联成功");
@@ -70,7 +70,7 @@ public class SysRoleMenuController {
      */
     @DeleteMapping("/batchDel/{pks}")
     @ApiOperation(value = "根据角色和菜单关联主键批量删除数据", notes = "根据角色和菜单关联主键批量删除数据", produces = "application/json")
-    public ResultObj batchDel(@ApiParam("主键") @PathVariable(value = "pks") Set<String> pks) {
+    public ResultObj<String> batchDel(@ApiParam("主键") @PathVariable(value = "pks") Set<String> pks) {
 
         // 通过主键批量删除数据
         this.sysRoleMenuService.batchDel(pks);
@@ -85,7 +85,7 @@ public class SysRoleMenuController {
     */
     @GetMapping("/{roleCode}")
     @ApiOperation(value = "根据roleId主键查看数据", notes = "根据roleId主键查看数据", produces = "application/json")
-    public ResultObj getDetail(@PathVariable(value = "roleId") String roleCode) {
+    public ResultObj<SysRoleMenuDto> getDetail(@PathVariable(value = "roleId") String roleCode) {
 
         // 通过主键查看数据
         SysRoleMenuDto dto = this.sysRoleMenuService.getDetail(roleCode);
