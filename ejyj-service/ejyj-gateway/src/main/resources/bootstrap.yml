@@ -5,6 +5,12 @@ spring:
     nacos:
       discovery:
         server-addr: 121.43.37.234:8848
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':      #允许跨域访问的资源
+            allo
+
 
 #        file-extension: yaml # 配置格式
 #        shared-dataids: all-gateway.yaml # 全局引入的配置

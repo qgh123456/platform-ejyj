@@ -14,7 +14,7 @@ public class MysqlTest {
             //加载驱动类
             Class.forName("com.mysql.jdbc.Driver");
             //建立连接
-            Connection conn = DriverManager.getConnection("jdbc:mysql://181.31.250.82:3306/micro_system?useSSL=false","root","123456");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://47.100.7.152:3306/sys?useSSL=false","javademo","123qwe!@#");
             System.out.println(conn);
         } catch (ClassNotFoundException e) {
             // TODO Auto-generated catch block
