@@ -13,7 +13,7 @@ import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
  * @since 2022/8/20 3:25 下午
  **/
 @Configuration
-public class CorsConfig {
+public class GatewayCorsConfig {
 
     /**
      * 设置跨域配置.

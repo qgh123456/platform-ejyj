@@ -30,11 +30,32 @@
             <artifactId>lombok</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.atqgh</groupId>
-            <artifactId>ejyj-common-core</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.atqgh</groupId>-->
+<!--            <artifactId>ejyj-common-core</artifactId>-->
+<!--        </dependency>-->
 
     </dependencies>
+
+    <build>
+        <plugins>
+            <!--打包可运行 mvn package spring-boot:repackage-->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.4.1</version>
+                <configuration>
+                    <mainClass>com.atqgh.gateway.GateWayApplcation</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
