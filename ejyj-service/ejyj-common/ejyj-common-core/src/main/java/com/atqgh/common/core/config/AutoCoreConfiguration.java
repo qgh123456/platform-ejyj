@@ -1,8 +1,10 @@
 package com.atqgh.common.core.config;
 
 import com.atqgh.common.core.handler.GlobalExceptionHandler;
+import com.atqgh.common.core.utils.RedisUtils;
 import com.atqgh.common.core.utils.SpringUtils;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -11,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
  * @date 2022/7/9 4:26 下午
  **/
 @Configuration
+@ComponentScan(basePackages = "com.atqgh.common.core")
 public class AutoCoreConfiguration {
 
     /**

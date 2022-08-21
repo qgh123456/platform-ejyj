@@ -3,10 +3,10 @@ server:
 spring:
   application:
     name: ejyj-gateway
-#  redis:
-#    database: 0
-#    host: 121.43.37.234
-#    port: 6379
+  redis:
+    database: 0
+    host: 121.43.37.234
+    port: 6379
 
   cloud:
     # Sentinel熔断器
@@ -25,7 +25,7 @@ spring:
           predicates:
             - Path=/ejyj-system/**
           filters:
-            - StripPrefix=1
+            - StripPrefix=1   #去掉第一个前缀，也就是去掉ejyj-system
 #        - id: micro-system-provider-route
 #          # 采用 LoadBalanceClient 方式请求，以 lb:// 开头，后面的是注册在 Nacos 上的服务名
 #          uri: lb://micro-system-provider

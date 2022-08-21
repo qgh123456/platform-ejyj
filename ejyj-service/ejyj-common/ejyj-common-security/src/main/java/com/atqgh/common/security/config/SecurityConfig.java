@@ -59,7 +59,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         String loginUrl = "/system/login";
-        String anonUrlStrs = "/swagger-ui.html,/webjars/**,/swagger-resources/**,/v2/api-docs/**,/,/csrf";
+        String anonUrlStrs = "/swagger-ui.html,/webjars/**,/swagger-resources/**,/v2/api-docs/**,/,/csrf,/system/captcha";
         String[] anonUrls = StringUtils.splitByWholeSeparatorPreserveAllTokens(anonUrlStrs, ",");
         http
             // 关闭csrf，前后端分离的项目相当于自带csrf防护

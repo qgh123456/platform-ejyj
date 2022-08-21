@@ -64,6 +64,11 @@
             <artifactId>ejyj-common-security</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.github.whvcse</groupId>
+            <artifactId>easy-captcha</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>

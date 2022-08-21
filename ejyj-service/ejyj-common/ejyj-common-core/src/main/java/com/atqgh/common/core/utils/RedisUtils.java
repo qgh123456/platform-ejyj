@@ -6,8 +6,10 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.BeansException;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
@@ -20,9 +22,8 @@ import org.springframework.stereotype.Component;
 @Component
 @Slf4j
 @ConditionalOnBean(name = "redisTemplate")
-public class RedisUtils {
+public class RedisUtils implements ApplicationContextAware {
 
-    @Autowired
     private static RedisTemplate<String, Object> redisTemplate;
 
     /**
@@ -564,4 +565,8 @@ public class RedisUtils {
         }
     }
 
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        redisTemplate = applicationContext.getBean("redisTemplate", RedisTemplate.class);
+    }
 }

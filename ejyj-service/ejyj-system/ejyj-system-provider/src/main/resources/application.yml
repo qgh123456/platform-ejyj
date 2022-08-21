@@ -7,10 +7,6 @@ spring:
     password: 123qwe!@#
     driver-class-name: com.mysql.jdbc.Driver
 
-  mvc:
-    pathmatch: # 重要！否则会报错
-      matching-strategy: ant_path_matcher
-
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
@@ -19,6 +15,14 @@ spring:
     database: 0
     host: 121.43.37.234
     port: 6379
+    lettuce:
+      pool:
+        min-idle: 8
+        max-idle: 500
+        max-active: 2000
+        max-wait: 10000
+      timeout: 5000
+
 
 mybatis-plus:
   mapper-locations: classpath*:com/atqgh/system/provider/mapper/xml/*.xml
@@ -29,19 +33,6 @@ mybatis-plus:
 # 开启资源权限配置
 #micro:
 #  enableResourceSecurity: true
-
-swagger:
-  enabled: true
-  title: 测试接口
-  description: 描述测试接口
-  version: 1.0.0
-  contact:
-    name: qiguohui
-    url:
-    email: xxx@qq.com
-  package: com.atqgh.system.provider
-  base-path: /**
-  exclude-path: /error, /ops/**
 
 
 

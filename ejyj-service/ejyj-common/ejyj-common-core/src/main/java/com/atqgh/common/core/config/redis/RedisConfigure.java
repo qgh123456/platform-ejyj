@@ -1,4 +1,4 @@
-package com.atqgh.common.security.config;
+package com.atqgh.common.core.config.redis;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
