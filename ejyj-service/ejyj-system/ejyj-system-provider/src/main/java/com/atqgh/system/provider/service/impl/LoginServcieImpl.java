@@ -6,7 +6,9 @@ import com.atqgh.common.security.domain.LoginUserDetailDto;
 import com.atqgh.common.security.utils.JwtUtil;
 import com.atqgh.common.security.utils.RedisCache;
 import com.atqgh.system.provider.service.LoginServcie;
+import com.atqgh.system.provider.service.ValidateCodeService;
 import com.atqgh.system.provider.vo.LoginUserVo;
+import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -23,15 +25,20 @@ import org.springframework.util.ObjectUtils;
 @Service
 public class LoginServcieImpl implements LoginServcie {
 
-    @Autowired
+    @Resource
     private AuthenticationManager authenticationManager;
 
-    @Autowired
+    @Resource
     private RedisCache redisCache;
+
+    @Resource
+    private ValidateCodeService validateCodeService;
 
     @Override
     public String login(LoginUserVo loginUserVo) {
 
+        // 判断验证码是否存在
+        validateCodeService.check(loginUserVo.getKey(), loginUserVo.getCode());
         // 1，获取AuthenticationManager
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(loginUserVo.getUserName(), loginUserVo.getPassword());
         Authentication authenticate = authenticationManager.authenticate(authenticationToken);

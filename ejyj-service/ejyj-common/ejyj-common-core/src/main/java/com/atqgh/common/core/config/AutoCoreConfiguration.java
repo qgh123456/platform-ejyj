@@ -1,7 +1,6 @@
 package com.atqgh.common.core.config;
 
 import com.atqgh.common.core.handler.GlobalExceptionHandler;
-import com.atqgh.common.core.utils.RedisUtils;
 import com.atqgh.common.core.utils.SpringUtils;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

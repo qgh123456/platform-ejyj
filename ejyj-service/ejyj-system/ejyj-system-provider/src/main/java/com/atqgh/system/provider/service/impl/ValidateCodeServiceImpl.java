@@ -1,6 +1,7 @@
 package com.atqgh.system.provider.service.impl;
 
 import com.atqgh.common.core.constants.CommonConstants;
+import com.atqgh.common.core.exception.MicroException;
 import com.atqgh.common.core.utils.RedisUtils;
 import com.atqgh.system.provider.config.SystemProperties;
 import com.atqgh.system.provider.config.ValidateCodeProperties;
@@ -41,8 +42,12 @@ public class ValidateCodeServiceImpl implements ValidateCodeService {
     }
 
     @Override
-    public void check(String key, String value) {
+    public void check(@NonNull String key, @NonNull String value) {
 
+        Object codeInRedis = RedisUtils.get(CommonConstants.System.CODE_PREFIX + key);
+        if (!StringUtils.equalsIgnoreCase(value, String.valueOf(codeInRedis))) {
+            throw new MicroException("验证码不正确");
+        }
     }
 
     private Captcha createCaptcha(ValidateCodeProperties code) {
