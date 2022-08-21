@@ -30,11 +30,6 @@
             <artifactId>lombok</artifactId>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>com.atqgh</groupId>-->
-<!--            <artifactId>ejyj-common-core</artifactId>-->
-<!--        </dependency>-->
-
     </dependencies>
 
     <build>
