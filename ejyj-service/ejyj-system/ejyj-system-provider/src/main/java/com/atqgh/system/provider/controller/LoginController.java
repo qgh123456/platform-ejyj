@@ -1,6 +1,6 @@
 package com.atqgh.system.provider.controller;
 
-import com.atqgh.common.domain.ResultObj;
+import com.atqgh.common.core.domain.ResultObj;
 import com.atqgh.system.provider.service.LoginServcie;
 import com.atqgh.system.provider.vo.LoginUserVo;
 import javax.annotation.Resource;

@@ -1,6 +1,6 @@
 package com.atqgh.system.provider.login;
 
-import com.atqgh.common.exception.MicroException;
+import com.atqgh.common.core.exception.MicroException;
 import com.atqgh.common.security.domain.LoginSysUserDto;
 import com.atqgh.common.security.domain.LoginUserDetailDto;
 import com.atqgh.system.provider.dto.SysPermissDto;

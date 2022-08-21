@@ -2,6 +2,7 @@ package com.atqgh.common.security.config;
 
 import com.atqgh.common.security.filter.JwtAuthenticationTokenFilter;
 import javax.annotation.Resource;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -43,10 +44,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-    public static void main(String[] args) {
-        System.out.println(new BCryptPasswordEncoder().encode("admin"));
-    }
-
     /**
      * 权限管理器.
      * @return 权限管理器
@@ -60,7 +57,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
         String loginUrl = "/system/login";
+        String anonUrlStrs = "/swagger-ui.html,/webjars/**,/swagger-resources/**,/v2/api-docs/**,/,/csrf";
+        String[] anonUrls = StringUtils.splitByWholeSeparatorPreserveAllTokens(anonUrlStrs, ",");
         http
             // 关闭csrf，前后端分离的项目相当于自带csrf防护
             .csrf().disable()
@@ -70,6 +70,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .authorizeRequests()
             // 对于登录接口 允许匿名访问（没有登陆的情况下可以访问这个路径,登陆之后是访问不了的）
             // permitAll() 所有的都可以访问
+            .antMatchers(anonUrls).permitAll()
             .antMatchers(loginUrl).anonymous()
             // 除上面外的所有请求全部需要鉴权认证
             .anyRequest().authenticated();

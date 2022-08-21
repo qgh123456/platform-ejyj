@@ -1,9 +1,9 @@
 package com.atqgh.system.provider.service.impl;
 
-import com.atqgh.common.enums.ResultStatus;
-import com.atqgh.common.exception.MicroException;
-import com.atqgh.common.utils.PropertiesCopyUtils;
-import com.atqgh.common.utils.WebUtil;
+import com.atqgh.common.core.enums.ResultStatus;
+import com.atqgh.common.core.exception.MicroException;
+import com.atqgh.common.core.utils.PropertiesCopyUtils;
+import com.atqgh.common.core.utils.WebUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import java.util.List;
 import javax.annotation.Resource;

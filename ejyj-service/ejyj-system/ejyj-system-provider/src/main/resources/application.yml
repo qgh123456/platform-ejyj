@@ -7,6 +7,10 @@ spring:
     password: 123qwe!@#
     driver-class-name: com.mysql.jdbc.Driver
 
+  mvc:
+    pathmatch: # 重要！否则会报错
+      matching-strategy: ant_path_matcher
+
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
@@ -25,3 +29,19 @@ mybatis-plus:
 # 开启资源权限配置
 #micro:
 #  enableResourceSecurity: true
+
+swagger:
+  enabled: true
+  title: 测试接口
+  description: 描述测试接口
+  version: 1.0.0
+  contact:
+    name: qiguohui
+    url:
+    email: xxx@qq.com
+  package: com.atqgh.system.provider
+  base-path: /**
+  exclude-path: /error, /ops/**
+
+
+

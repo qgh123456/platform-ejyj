@@ -1,7 +1,7 @@
 package com.atqgh.common.security.handler;
 
 import com.alibaba.fastjson.JSON;
-import com.atqgh.common.domain.ResultObj;
+import com.atqgh.common.core.domain.ResultObj;
 import com.atqgh.common.security.utils.WebUtils;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

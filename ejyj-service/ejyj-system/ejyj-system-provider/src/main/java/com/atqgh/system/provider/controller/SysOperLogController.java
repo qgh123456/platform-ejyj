@@ -1,6 +1,6 @@
 package com.atqgh.system.provider.controller;
 
-import com.atqgh.common.domain.ResultObj;
+import com.atqgh.common.core.domain.ResultObj;
 import com.atqgh.system.provider.dto.SysOperLogDto;
 import com.atqgh.system.provider.service.SysOperLogService;
 import com.atqgh.system.provider.vo.SysOperLogAddVo;
