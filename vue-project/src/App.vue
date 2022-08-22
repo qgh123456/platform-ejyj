@@ -1,85 +1,257 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
+    <div class="layout">
+        <el-container v-if="state.showMenu" class="container">
+            <el-aside class="aside">
+                <div class="head">
+                    <div>
+                        <img src="https://s.weituibao.com/1582958061265/mlogo.png" alt="logo" />
+                        <span>vue3 admin</span>
+                    </div>
+                </div>
+                <div class="line" />
+                <el-menu :default-openeds="state.defaultOpen" background-color="#222832" text-color="#fff" :router="true" :default-active="state.currentPath">
+                    <el-submenu index="1">
+                        <template #title>
+                            <span>Dashboard</span>
+                        </template>
+                        <el-menu-item-group>
+                            <el-menu-item index="/introduce">
+                                <i class="el-icon-data-line" />
+                                系统介绍
+                            </el-menu-item>
+                            <el-menu-item index="/dashboard">
+                                <i class="el-icon-odometer" />
+                                系统介绍
+                            </el-menu-item>
+                            <el-menu-item index="/add">
+                                <i class="el-icon-plus" />
+                                系统介绍
+                            </el-menu-item>
+                        </el-menu-item-group>
+                    </el-submenu>
+                    <el-submenu index="2">
+                        <template #title>
+                            <span>首页配置</span>
+                        </template>
+                        <el-menu-item-group>
+                            <el-menu-item index="/swiper">
+                                <i class="el-icon-picture" />
+                                系统介绍
+                            </el-menu-item>
+                            <el-menu-item index="/hot">
+                                <i class="el-icon-star-on" />
+                                系统介绍
+                            </el-menu-item>
+                            <el-menu-item index="/new">
+                                <i class="el-icon-sell" />
+                                系统介绍
+                            </el-menu-item>
+                            <el-menu-item index="/recommend">
+                                <i class="el-icon-thumb" />
+                                系统介绍
+                            </el-menu-item>
+                        </el-menu-item-group>
+                    </el-submenu>
+                    <el-submenu index="3">
+                        <template #title>
+                            <span>模块管理</span>
+                        </template>
+                        <el-menu-item-group>
+                            <el-menu-item index="/category">
+                                <i class="el-icon-menu" />
+                                系统介绍
+                            </el-menu-item>
+                            <el-menu-item index="/good">
+                                <i class="el-icon-s-goods" />
+                                系统介绍
+                            </el-menu-item>
+                            <el-menu-item index="/guest">
+                                <i class="el-icon-user-solid" />
+                                系统介绍
+                            </el-menu-item>
+                            <el-menu-item index="/order">
+                                <i class="el-icon-s-order" />
+                                系统介绍
+                            </el-menu-item>
+                        </el-menu-item-group>
+                    </el-submenu>
+                    <el-submenu index="4">
+                        <template #title>
+                            <span>系统介绍</span>
+                        </template>
+                        <el-menu-item-group>
+                            <el-menu-item index="/account">
+                                <i class="el-icon-lock" />
+                                修改密码
+                            </el-menu-item>
+                        </el-menu-item-group>
+                    </el-submenu>
+                </el-menu>
+            </el-aside>
+            <el-container class="content">
+                <Header />
+                <div class="main">
+                    <router-view />
+                </div>
+                <Footer />
+            </el-container>
+        </el-container>
+        <el-container v-else class="container">
+            <router-view />
+        </el-container>
     </div>
-  </header>
-
-  <RouterView />
 </template>
 
+<script>
+import { onUnmounted, reactive } from 'vue';
+import Header from '@/components/Header.vue';
+import Footer from '@/components/Footer.vue';
+import { useRouter } from 'vue-router';
+import { pathMap, localGet } from '@/utils';
+export default {
+    name: 'App',
+    components: {
+        Header,
+        Footer
+    },
+    setup() {
+        console.log('App');
+        const noMenu = ['/login'];
+        const router = useRouter();
+        const state = reactive({
+            defaultOpen: ['1', '2', '3', '4'],
+            showMenu: true,
+            currentPath: '/dashboard',
+            count: {
+                number: 1
+            }
+        });
+        // 监听浏览器原生回退事件
+        if (window.history && window.history.pushState) {
+            history.pushState(null, null, document.URL);
+            window.addEventListener(
+                'popstate',
+                () => {
+                    if (!localGet('token')) {
+                        state.showMenu = false;
+                    }
+                },
+                false
+            );
+        }
+        const unwatch = router.beforeEach((to, from, next) => {
+            if (to.path == '/login') {
+                // 如果路径是 /login 则正常执行
+                next();
+            } else {
+                // 如果不是 /login，判断是否有 token
+                if (!localGet('token')) {
+                    // 如果没有，则跳至登录页面
+                    next({ path: '/login' });
+                } else {
+                    // 否则继续执行
+                    next();
+                }
+            }
+            state.showMenu = !noMenu.includes(to.path);
+            state.currentPath = to.path;
+            document.title = pathMap[to.name];
+        });
+
+        onUnmounted(() => {
+            unwatch();
+        });
+
+        return {
+            state
+        };
+    }
+};
+</script>
+
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+.layout {
+    min-height: 100vh;
+    background-color: #ffffff;
 }
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+.container {
+    height: 100vh;
 }
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
+.aside {
+    width: 200px !important;
+    background-color: #222832;
+    overflow: hidden;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none;
 }
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
+.aside::-webkit-scrollbar {
+    display: none;
 }
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
+.head {
     display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+}
+.head > div {
     display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+    align-items: center;
+}
 
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+.head img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+.head span {
+    font-size: 20px;
+    color: #ffffff;
+}
+.line {
+    border-top: 1px solid hsla(0, 0%, 100%, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.content {
+    display: flex;
+    flex-direction: column;
+    max-height: 100vh;
+    overflow: hidden;
+}
+.main {
+    height: calc(100vh - 100px);
+    overflow: auto;
+    padding: 10px;
+}
+</style>
+<style>
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.el-menu {
+    border-right: none !important;
+}
+.el-submenu {
+    border-top: 1px solid hsla(0, 0%, 100%, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.el-submenu:first-child {
+    border-top: none;
+}
+.el-submenu [class^='el-icon-'] {
+    vertical-align: -1px !important;
+}
+a {
+    color: #409eff;
+    text-decoration: none;
+}
+.el-pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+.el-popper__arrow {
+    display: none;
 }
 </style>
