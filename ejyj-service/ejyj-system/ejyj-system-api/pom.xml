@@ -14,5 +14,18 @@
 
     <packaging>jar</packaging>
 
+    <dependencies>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>com.atqgh</groupId>
+            <artifactId>ejyj-common-core</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

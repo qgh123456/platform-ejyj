@@ -1,5 +1,8 @@
 package com.atqgh.system.provider.service.impl;
 
+import com.atqgh.system.provider.dto.LoginUserDto;
+import com.atqgh.system.provider.mapper.SysRoleMapper;
+import com.atqgh.system.provider.service.SysPermissionService;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import java.util.List;
 import javax.annotation.Resource;
@@ -37,6 +40,12 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 
     @Resource
     private SysUserMapper sysUserMapper;
+
+    @Resource
+    private SysPermissionService sysPermissionService;
+
+    @Resource
+    private SysRoleMapper sysRoleMapper;
 
     @Override
     public int insert(@NonNull SysUserAddVo addVo) {
@@ -87,6 +96,30 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         List<SysUser> list = this.baseMapper.selectList(queryWrapper);
         // 根据条件获取总数
         return new PageInfo<>(PropertiesCopyUtils.entityToDto(list, SysUserPageDto.class));
+    }
+
+    @Override
+    public LoginUserDto getInfo(@NonNull String userName) {
+
+        // 通过用户名获取用户详情
+        LambdaQueryWrapper<SysUser> userQueryWrapper = new LambdaQueryWrapper<>();
+        userQueryWrapper.eq(SysUser::getUserName, userName);
+        SysUser sysUser = this.sysUserMapper.selectOne(userQueryWrapper);
+        if (ObjectUtils.isEmpty(sysUser)) {
+            throw new MicroException(ResultStatus.BUSINESS_REQUEST_FAILED.getCode(), "用户名错误");
+        }
+        LoginUserDto sysUserDto = new LoginUserDto();
+        sysUserDto.setSysUser(PropertiesCopyUtils.entityToDto(sysUser, SysUserDto.class));
+
+        // 获取角色集合
+        Set<String> roleKeys = this.sysRoleMapper.getRoleKeys(sysUser.getCode());
+        sysUserDto.setRoles(roleKeys);
+
+        // 获取权限集合
+        Set<String> pers = this.sysPermissionService.getPermissions(sysUser.getCode(), roleKeys);
+        sysUserDto.setPermissions(pers);
+
+        return sysUserDto;
     }
 
 }

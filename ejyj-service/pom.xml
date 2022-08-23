@@ -66,6 +66,12 @@
 
             <dependency>
                 <groupId>com.atqgh</groupId>
+                <artifactId>ejyj-system-api</artifactId>
+                <version>${current_project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.atqgh</groupId>
                 <artifactId>ejyj-common-core</artifactId>
                 <version>${current_project.version}</version>
             </dependency>

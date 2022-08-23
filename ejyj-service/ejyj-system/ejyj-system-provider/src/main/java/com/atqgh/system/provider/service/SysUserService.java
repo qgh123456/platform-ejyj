@@ -1,5 +1,6 @@
 package com.atqgh.system.provider.service;
 
+import com.atqgh.system.provider.dto.LoginUserDto;
 import com.atqgh.system.provider.vo.SysUserQueryVo;
 import com.atqgh.system.provider.vo.SysUserAddVo;
 import com.atqgh.system.provider.vo.SysUserUptVo;
@@ -58,4 +59,10 @@ public interface SysUserService extends IService<SysUser> {
      */
     PageInfo<SysUserPageDto> queryPageByWrapper(@NonNull SysUserQueryVo queryVo);
 
+    /**
+     * 获取登陆用户的相信信息.
+     * @param userName 用户名
+     * @return 登陆用户信息
+     */
+    LoginUserDto getInfo(@NonNull String userName);
 }

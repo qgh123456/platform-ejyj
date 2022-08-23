@@ -33,4 +33,13 @@
         menu_code AS menuCode
     </sql>
 
+    <select id="getPermissions" resultType="java.lang.String">
+
+        SELECT sm.perms
+        FROM sys_user_role sur
+        INNER JOIN sys_role_menu srm on sur.role_code  = srm.role_code
+        INNER JOIN  sys_menu sm on srm.menu_code = sm.code
+        WHERE  sur.user_code = #{userCode}
+    </select>
+
 </mapper>

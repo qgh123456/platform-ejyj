@@ -15,6 +15,7 @@
     <modules>
         <module>ejyj-common-core</module>
         <module>ejyj-common-security</module>
+        <module>ejyj-common-log</module>
     </modules>
 
 
