@@ -1,6 +1,7 @@
 package com.atqgh.system.provider.controller;
 
 import com.atqgh.common.core.domain.ResultObj;
+import com.atqgh.system.provider.dto.LoginUserDto;
 import com.atqgh.system.provider.dto.SysUserDto;
 import com.atqgh.system.provider.service.SysUserService;
 import com.atqgh.system.provider.vo.SysUserAddVo;
@@ -90,6 +91,20 @@ public class SysUserController {
         // 通过主键查看数据
         SysUserDto dto = this.sysUserService.getDetail(userId);
         return ResultObj.success(dto);
+    }
+
+    /**
+    * 查看用户信息.
+    *
+    * @param userName 用户名
+    * @return 详情信息
+    */
+    @GetMapping("/info/{userName}")
+    @ApiOperation(value = "根据userId主键查看数据", notes = "根据userId主键查看数据", produces = "application/json")
+    public ResultObj<LoginUserDto> getInfo(@PathVariable(value = "userName") String userName) {
+
+        // 通过主键查看数据
+        return ResultObj.success(this.sysUserService.getInfo(userName));
     }
 
 }

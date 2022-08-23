@@ -1,11 +1,13 @@
 package com.atqgh.system.provider.mapper;
 
+import java.util.Set;
 import org.apache.ibatis.annotations.Mapper;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.atqgh.system.provider.entity.SysRoleMenu;
 import com.atqgh.system.provider.vo.SysRoleMenuQueryVo;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.BeanUtils;
 
 /**
@@ -32,4 +34,10 @@ public interface SysRoleMenuMapper extends BaseMapper<SysRoleMenu> {
         return wrapper;
     }
 
+    /**
+     * 通过用户编码获取菜单权限.
+     * @param userCode 用户编码
+     * @return 菜单权限
+     */
+    Set<String> getPermissions(@Param("userCode") String userCode);
 }
