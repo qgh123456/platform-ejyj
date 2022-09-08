@@ -8,3 +8,6 @@ docker  run \
 -e MODE=standalone \
 -e PREFER_HOST_MODE=hostname \
 nacos/nacos-server:1.4.1;
+
+
+# https://blog.csdn.net/m0_68064743/article/details/124002568 各个组件的配置
