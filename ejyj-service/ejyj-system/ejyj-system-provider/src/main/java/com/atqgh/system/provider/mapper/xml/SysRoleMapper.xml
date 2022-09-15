@@ -98,4 +98,13 @@
         remark AS remark
     </sql>
 
+    <select id="getRoleKeys" resultType="java.lang.String">
+
+        select
+               sr.role_key
+        from sys_user_role sur
+        inner join sys_role sr on sur.role_code = sr.code
+        where sur.user_code = #{userCode}
+    </select>
+
 </mapper>

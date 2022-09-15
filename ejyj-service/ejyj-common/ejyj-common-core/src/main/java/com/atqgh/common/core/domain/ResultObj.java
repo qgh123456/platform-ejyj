@@ -31,6 +31,11 @@ public final class ResultObj<T> implements Serializable {
         this.data = data;
     }
 
+    private ResultObj(Integer code, String msg) {
+        this.code = code;
+        this.msg = msg;
+    }
+
     /**
      * 成功.
      * @param data 数据
@@ -79,7 +84,7 @@ public final class ResultObj<T> implements Serializable {
      */
     public static ResultObj<Object> error(int code, String msg) {
 
-        return error(ResultStatus.BUSINESS_REQUEST_FAILED.getCode(), msg, null);
+        return new ResultObj<>(code, msg);
     }
 
     /**
