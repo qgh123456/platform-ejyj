@@ -136,6 +136,7 @@
                 <version>${easy-captcha.version}</version>
             </dependency>
 
+
             <!--小雷工具类-->
             <dependency>
                 <groupId>com.xiaoleilu</groupId>
